@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Searches</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+
+	<style>
+		body {
+			background-color: #222;
+			padding: 0;
+			margin: 0;
+		}
+		body, input, textarea {
+			font-size: 20pt;
+			font-family: serif;
+		}
+
+		#wrapper {
+			padding-top: 50pt;
+		}
+
+		#query {
+			background-color: #222;
+			z-index: 100;
+			width: 100%;
+			height: 40pt;
+			padding-left: 20pt;
+			padding-top: 20pt;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#query input {
+			font-size: 24pt;
+			color: #eee;
+			background-color: transparent;
+			width: 100%;
+			border: none;
+			border-radius: 0;
+			border-bottom: 0.15em solid #000;
+			line-height: 1.3;
+			padding: 0;
+			margin: 0;
+		}
+		@media screen and (min-height: 150pt) {
+			#query {
+				position: fixed;
+			}
+		}
+
+		#buttons {
+			margin-top: 0.7em;
+			margin-left: 10pt;
+		}
+		#buttons .group {
+			padding-left: 1.5em;
+		}
+		#buttons .group .name {
+			color: #eee;
+			font-size: 20pt;
+			line-height: 1;
+			font-weight: normal;
+			margin: 0;
+			width: 1em;
+			float: left;
+			position: absolute;
+			margin-left: -1.5em;
+		}
+
+		#buttons input[type=button] {
+			width: 7.3em;
+			height: 2.2em;
+			margin: 0 0.2em 0.2em 0;
+			color: #eee;
+			background-color: #000;
+			border: none;
+			border-radius: 0.3em;
+			-webkit-appearance: none;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="wrapper">
+		<div id="query">
+			<input type="text" rows="1" placeholder="内容を入力した上で検索を選択します" />
+		</div>
+		<div id="buttons"></div>
+	</div>
+
+	<script>
+		(function () {
+			var searches = {
+				辞書: {
+					和: {
+						'Y!': 'http://search.yahoo.co.jp/search?p=%s&dsearch.x=1&fr=top_ga1_sa&tid=top_ga1_sa&ei=UTF-8&aq=&oq=&afs=',
+						goo: 'http://dictionary.goo.ne.jp/freewordsearcher.html?MT=%s&mode=0&id=top&kind=jn',
+						ALC: 'http://eow.alc.co.jp/%s',
+						jisho: 'http://beta.jisho.org/search/%s',
+						類語: 'http://thesaurus.weblio.jp/content_find?query=%s&searchType=exact',
+					},
+					英: {
+						英英: 'http://www.thefreedictionary.com/%s',
+						類語: 'http://thesaurus.com/browse/%s',
+					},
+					西: {
+						RAE: 'http://lema.rae.es/drae/?val=%s',
+						西英西: 'http://www.wordreference.com/enit/translation.asp?dict=esen&w=%s',
+					},
+					仏: {
+						仏英仏: 'http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren',
+					}
+				},
+				WP: {
+					和: 'http://ja.wikipedia.org/w/index.php?search=%s',
+					英: 'http://en.wikipedia.org/w/index.php?search=%s',
+					西: 'http://es.wikipedia.org/w/index.php?search=%s',
+				},
+				画: {
+					画像: 'http://www.google.com/search?safe=off&tbm=isch&q=%s',
+					動画: 'https://www.google.com/search?safe=off&tbm=vid&q=%s',
+				},
+				一般: {
+					Duck: 'https://duckduckgo.com/?q=%s',
+					Google: 'http://www.google.com/search?q=%s',
+					映画: 'http://www.imdb.com/find?q=%s&s=all',
+				},
+			};
+
+			var $ = document.querySelector.bind(document);
+
+			var query = $('#query input');
+
+			var groupIndex = 0;
+			appendButtons($('#buttons'), searches);
+
+			// query.addEventListener('input', adjustQuery);
+			// adjustQuery();
+
+			if (document.activeElement !== query) {
+				query.select();
+			}
+
+			// function adjustQuery() {
+			// 	var rows = query.rows;
+			// 	query.rows = 1;
+			// 	query.rows = Math.ceil(query.scrollHeight / query.clientHeight);
+			// }
+
+			function appendButtons(container, obj, name) {
+				if (name) {
+					container.appendChild(makeEl({
+						tag: 'h1',
+						classes: ['name'],
+						contents: name,
+					}));
+				};
+				Object.keys(obj).forEach( function (name) {
+					var current = obj[name];
+					if (typeof current === 'string') {
+						var button = makeEl({
+							tag: 'input',
+							type: 'button',
+							value: name,
+						});
+						// var button = document.createElement('input');
+						// button.type = 'button';
+						// button.value = name;
+						container.appendChild(button);
+						button.addEventListener('click', function () {
+							window.location = current.replace('%s', encodeURI(query.value));
+						});
+					} else {
+						var subContainer = makeEl({
+							tag: 'div',
+							classes: [
+								'group',
+								'group-' + (++groupIndex),
+								'group-' + name.replace(/\s/, '-'),
+							],
+						});
+						// var subContainer = document.createElement('div');
+						// subContainer.className = [
+						// 	'group',
+						// 	'group-' + (++groupIndex),
+						// 	'group-' + name.replace(/\s/, '-'),
+						// ].join(' ');
+						appendButtons(subContainer, current, name);
+						container.appendChild(subContainer);
+					}
+				});
+			}
+
+			function makeEl(def) {
+				var manual = ['tag', 'classes', 'contents'];
+
+				var el = document.createElement(def.tag);
+				if ('classes' in def) el.className = def.classes.join(' ');
+				if ('contents' in def) el.innerHTML = def.contents;
+
+				Object.keys(def).forEach( function (key) {
+					if (manual.indexOf(key) !== -1) return;
+					el[key] = def[key];
+					console.log(key, def[key]);
+				});
+
+				return el;
+			}
+		})();
+	</script>
+
+</body>
+</html>
