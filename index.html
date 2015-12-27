@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Searches</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 	<style>
 		body {
@@ -17,23 +17,29 @@
 			font-family: serif;
 		}
 
+		@media (max-width: 700px) {
+			body, input, textarea {
+				font-size: 13pt;
+			}
+		}
+
 		#wrapper {
-			padding-top: 50pt;
+			padding-top: 2.5em;
 		}
 
 		#query {
 			background-color: #222;
 			z-index: 100;
 			width: 100%;
-			height: 40pt;
-			padding-left: 20pt;
-			padding-top: 20pt;
+			height: 2em;
+			padding-left: 1em;
+			padding-top: 1em;
 			position: absolute;
 			left: 0;
 			top: 0;
 		}
 		#query input {
-			font-size: 24pt;
+			font-size: 1.2em;
 			color: #eee;
 			background-color: transparent;
 			width: 100%;
@@ -44,7 +50,7 @@
 			padding: 0;
 			margin: 0;
 		}
-		@media screen and (min-height: 150pt) {
+		@media screen and (min-height: 200px) {
 			#query {
 				position: fixed;
 			}
@@ -52,14 +58,14 @@
 
 		#buttons {
 			margin-top: 0.7em;
-			margin-left: 10pt;
+			margin-left: 0.5em;
 		}
 		#buttons .group {
 			padding-left: 1.5em;
 		}
 		#buttons .group .name {
 			color: #eee;
-			font-size: 20pt;
+			font-size: 1em;
 			line-height: 1;
 			font-weight: normal;
 			margin: 0;
@@ -85,13 +91,15 @@
 
 	<div id="wrapper">
 		<div id="query">
-			<input type="text" rows="1" placeholder="内容を入力した上で検索を選択します" />
+			<input type="text" rows="1" placeholder="検索内容" />
 		</div>
 		<div id="buttons"></div>
 	</div>
 
 	<script>
 		(function () {
+			'use strict';
+
 			var searches = {
 				辞書: {
 					和: {
@@ -129,85 +137,50 @@
 				},
 			};
 
-			var $ = document.querySelector.bind(document);
 
-			var query = $('#query input');
+			// Utilities.
 
-			var groupIndex = 0;
-			appendButtons($('#buttons'), searches);
-
-			// query.addEventListener('input', adjustQuery);
-			// adjustQuery();
-
-			if (document.activeElement !== query) {
-				query.select();
-			}
-
-			// function adjustQuery() {
-			// 	var rows = query.rows;
-			// 	query.rows = 1;
-			// 	query.rows = Math.ceil(query.scrollHeight / query.clientHeight);
-			// }
+			var toArray = Function.prototype.call.bind([].slice);
+			var sel = document.querySelector.bind(document);
+			var makeEl = function (tag, attrs) {
+				var children = toArray(arguments, 2);
+				var el = document.createElement(tag);
+				if (attrs) Object.keys(attrs).forEach(function (attr) { el.setAttribute(attr, attrs[attr]) });
+				children.map(function (obj) { return typeof obj === 'string' ? document.createTextNode(obj) : obj })
+					.forEach(function (node) { el.appendChild(node) });
+				return el;
+			};
 
 			function appendButtons(container, obj, name) {
 				if (name) {
-					container.appendChild(makeEl({
-						tag: 'h1',
-						classes: ['name'],
-						contents: name,
-					}));
+					container.appendChild(makeEl('h1', { 'class': 'name' }, name));
 				};
 				Object.keys(obj).forEach( function (name) {
 					var current = obj[name];
 					if (typeof current === 'string') {
-						var button = makeEl({
-							tag: 'input',
-							type: 'button',
-							value: name,
-						});
-						// var button = document.createElement('input');
-						// button.type = 'button';
-						// button.value = name;
+						var button = makeEl('input', { type: 'button', value: name });
 						container.appendChild(button);
 						button.addEventListener('click', function () {
 							window.location = current.replace('%s', encodeURI(query.value));
 						});
 					} else {
-						var subContainer = makeEl({
-							tag: 'div',
-							classes: [
-								'group',
-								'group-' + (++groupIndex),
-								'group-' + name.replace(/\s/, '-'),
-							],
-						});
-						// var subContainer = document.createElement('div');
-						// subContainer.className = [
-						// 	'group',
-						// 	'group-' + (++groupIndex),
-						// 	'group-' + name.replace(/\s/, '-'),
-						// ].join(' ');
+						var subContainer = makeEl('div', { 'class': ['group', 'group-' + (++groupIndex), 'group-' + name.replace(/\s/, '-')].join(' ') });
 						appendButtons(subContainer, current, name);
 						container.appendChild(subContainer);
 					}
 				});
 			}
 
-			function makeEl(def) {
-				var manual = ['tag', 'classes', 'contents'];
 
-				var el = document.createElement(def.tag);
-				if ('classes' in def) el.className = def.classes.join(' ');
-				if ('contents' in def) el.innerHTML = def.contents;
+			var query = sel('#query input');
 
-				Object.keys(def).forEach( function (key) {
-					if (manual.indexOf(key) !== -1) return;
-					el[key] = def[key];
-					console.log(key, def[key]);
-				});
+			var groupIndex = 0;
+			appendButtons(sel('#buttons'), searches);
 
-				return el;
+			if (document.activeElement !== query) {
+				query.select();
 			}
+
 		})();
 	</script>
 
