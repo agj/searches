@@ -102,39 +102,46 @@
 
 			var searches = {
 				辞書: {
+					全: {
+						goo: 'https://dictionary.goo.ne.jp/freewordsearcher.html?MT=%s&mode=0&kind=all',
+					},
 					和: {
-						'Y!': 'http://dic.search.yahoo.co.jp/dsearch?p=%s&dic_id=jj&stype=prefix&b=1',
-						goo: 'http://dictionary.goo.ne.jp/freewordsearcher.html?MT=%s&mode=0&id=top&kind=jn',
-						ALC: 'http://eow.alc.co.jp/%s',
+						ALC:   'http://eow.alc.co.jp/%s',
 						jisho: 'http://jisho.org/search/%s',
-						類語: 'http://thesaurus.weblio.jp/content_find?query=%s&searchType=exact',
+						類語:   'http://thesaurus.weblio.jp/content_find?query=%s&searchType=exact',
+						数え方: 'http://www.sanabo.com/kazoekata/?s=%s',
+						'Y!':  'http://dic.search.yahoo.co.jp/dsearch?p=%s&dic_id=jj&stype=prefix&b=1',
+					},
+					中: {
+						pinpin: 'http://dictionary.pinpinchinese.com/search/t/%s',
 					},
 					英: {
-						英英: 'http://www.thefreedictionary.com/%s',
+						英:   'http://www.thefreedictionary.com/%s',
+						西英: 'http://www.wordreference.com/enit/translation.asp?dict=esen&w=%s',
 						類語: 'http://thesaurus.com/browse/%s',
 					},
 					西: {
 						RAE: 'http://lema.rae.es/drae/?val=%s',
-						西英西: 'http://www.wordreference.com/enit/translation.asp?dict=esen&w=%s',
 					},
 					仏: {
-						仏英仏: 'http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren',
+						仏英: 'http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren',
 					}
 				},
 				WP: {
 					和: 'http://ja.wikipedia.org/w/index.php?search=%s',
 					英: 'http://en.wikipedia.org/w/index.php?search=%s',
 					西: 'http://es.wikipedia.org/w/index.php?search=%s',
+					中: 'http://zh.wikipedia.org/w/index.php?search=%s',
 				},
 				画: {
-					画像: 'http://www.google.com/search?safe=off&tbm=isch&q=%s',
-					動画: 'https://www.google.com/search?safe=off&tbm=vid&q=%s',
+					画像:  'http://www.google.com/search?safe=off&tbm=isch&q=%s',
+					動画:  'https://www.google.com/search?safe=off&tbm=vid&q=%s',
 					nico: 'http://www.nicovideo.jp/search/%s',
 				},
 				一般: {
-					Duck: 'https://duckduckgo.com/?q=%s',
+					Duck:   'https://duckduckgo.com/?q=%s',
 					Google: 'http://www.google.com/search?q=%s',
-					映画: 'http://www.imdb.com/find?q=%s&s=all',
+					映画:    'http://www.imdb.com/find?q=%s&s=all',
 				},
 			};
 
