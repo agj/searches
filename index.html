@@ -60,20 +60,6 @@
 			margin-top: 0.7em;
 			margin-left: 0.5em;
 		}
-		#buttons .group {
-			padding-left: 1.5em;
-		}
-		#buttons .group .name {
-			color: #eee;
-			font-size: 1em;
-			line-height: 1;
-			font-weight: normal;
-			margin: 0;
-			width: 1em;
-			float: left;
-			position: absolute;
-			margin-left: -1.5em;
-		}
 
 		#buttons input[type=button] {
 			width: 7.3em;
@@ -100,50 +86,54 @@
 		(function () {
 			'use strict';
 
-			var searches = {
-				辞書: {
-					全: {
-						goo: 'https://dictionary.goo.ne.jp/freewordsearcher.html?MT=%s&mode=0&kind=all',
-					},
-					和: {
-						ALC:   'http://eow.alc.co.jp/%s',
-						jisho: 'http://jisho.org/search/%s',
-						類語:   'http://thesaurus.weblio.jp/content_find?query=%s&searchType=exact',
-						数え方: 'http://www.sanabo.com/kazoekata/?s=%s',
-						'Y!':  'http://dic.search.yahoo.co.jp/dsearch?p=%s&dic_id=jj&stype=prefix&b=1',
-					},
-					中: {
-						pinpin: 'http://dictionary.pinpinchinese.com/search/t/%s',
-					},
-					英: {
-						英:   'http://www.thefreedictionary.com/%s',
-						西英: 'http://www.wordreference.com/enit/translation.asp?dict=esen&w=%s',
-						類語: 'http://thesaurus.com/browse/%s',
-					},
-					西: {
-						RAE: 'http://lema.rae.es/drae/?val=%s',
-					},
-					仏: {
-						仏英: 'http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren',
-					}
-				},
-				WP: {
-					和: 'http://ja.wikipedia.org/w/index.php?search=%s',
-					英: 'http://en.wikipedia.org/w/index.php?search=%s',
-					西: 'http://es.wikipedia.org/w/index.php?search=%s',
-					中: 'http://zh.wikipedia.org/w/index.php?search=%s',
-				},
-				画: {
-					画像:  'http://www.google.com/search?safe=off&tbm=isch&q=%s',
-					動画:  'https://www.google.com/search?safe=off&tbm=vid&q=%s',
-					nico: 'http://www.nicovideo.jp/search/%s',
-				},
-				一般: {
-					Duck:   'https://duckduckgo.com/?q=%s',
-					Google: 'http://www.google.com/search?q=%s',
-					映画:    'http://www.imdb.com/find?q=%s&s=all',
-				},
-			};
+			const searches = [
+				{ name: 'Duck',
+				  url:  'https://duckduckgo.com/?q=%s' },
+				{ name: 'Google',
+				  url:  'http://www.google.com/search?q=%s' },
+				{ name: 'goo',
+				  url:  'https://dictionary.goo.ne.jp/freewordsearcher.html?MT=%s&mode=0&kind=all' },
+				{ name: 'ALC',
+				  url:  'http://eow.alc.co.jp/%s' },
+				{ name: 'jisho',
+				  url:  'http://jisho.org/search/%s' },
+				{ name: '和 類語',
+				  url:  'http://thesaurus.weblio.jp/content_find?query=%s&searchType=exact' },
+				{ name: '数え方',
+				  url:  'http://www.sanabo.com/kazoekata/?s=%s' },
+				{ name: 'Y!辞書',
+				  url:  'http://dic.search.yahoo.co.jp/dsearch?p=%s&dic_id=jj&stype=prefix&b=1' },
+				{ name: 'pinpin',
+				  url:  'http://dictionary.pinpinchinese.com/search/t/%s' },
+				{ name: '英→英',
+				  url:  'http://www.thefreedictionary.com/%s' },
+				{ name: '西→英',
+				  url:  'http://www.wordreference.com/enit/translation.asp?dict=esen&w=%s' },
+				{ name: '英 類語',
+				  url:  'http://thesaurus.com/browse/%s' },
+				{ name: 'RAE',
+				  url:  'http://lema.rae.es/drae/?val=%s' },
+				{ name: '仏→英',
+				  url:  'http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren' },
+				{ name: 'Wiki和',
+				  url:  'http://ja.wikipedia.org/w/index.php?search=%s' },
+				{ name: 'Wiki英',
+				  url:  'http://en.wikipedia.org/w/index.php?search=%s' },
+				{ name: 'Wiki西',
+				  url:  'http://es.wikipedia.org/w/index.php?search=%s' },
+				{ name: 'Wiki中',
+				  url:  'http://zh.wikipedia.org/w/index.php?search=%s' },
+				{ name: '画像',
+				  url:  'http://www.google.com/search?safe=off&tbm=isch&q=%s' },
+				{ name: '動画',
+				  url:  'https://www.google.com/search?safe=off&tbm=vid&q=%s' },
+				{ name: 'nico',
+				  url:  'http://www.nicovideo.jp/search/%s' },
+				{ name: 'TMDb',
+				  url:  'https://www.themoviedb.org/search?query=%s' },
+				{ name: 'BGG',
+				  url:  'https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=%s' },
+			];
 
 
 			// Utilities.
@@ -159,31 +149,20 @@
 				return el;
 			};
 
-			function appendButtons(container, obj, name) {
-				if (name) {
-					container.appendChild(makeEl('h1', { 'class': 'name' }, name));
-				};
-				Object.keys(obj).forEach( function (name) {
-					var current = obj[name];
-					if (typeof current === 'string') {
-						var button = makeEl('input', { type: 'button', value: name });
-						container.appendChild(button);
-						button.addEventListener('click', function () {
-							window.location = current.replace('%s', encodeURI(query.value));
-						});
-					} else {
-						var subContainer = makeEl('div', { 'class': ['group', 'group-' + (++groupIndex), 'group-' + name.replace(/\s/, '-')].join(' ') });
-						appendButtons(subContainer, current, name);
-						container.appendChild(subContainer);
-					}
-				});
-			}
-
 
 			var query = sel('#query input');
 
-			var groupIndex = 0;
-			appendButtons(sel('#buttons'), searches);
+			const buttonsContainer = sel('#buttons');
+
+			searches.map((obj) => {
+				var button = makeEl('input', { type: 'button', value: obj.name });
+				button.addEventListener('click', function () {
+					window.location = obj.url.replace('%s', encodeURI(query.value));
+				});
+				return button;
+			})
+			.forEach(button => buttonsContainer.appendChild(button));
+
 
 			if (document.activeElement !== query) {
 				query.select();
