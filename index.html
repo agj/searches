@@ -112,7 +112,7 @@
 				{ name: '英 類語',
 				  url:  'http://thesaurus.com/browse/%s' },
 				{ name: 'RAE',
-				  url:  'http://lema.rae.es/drae/?val=%s' },
+				  url:  'https://dle.rae.es/?id=%s' },
 				{ name: '仏→英',
 				  url:  'http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren' },
 				{ name: 'Wiki和',
@@ -133,6 +133,10 @@
 				  url:  'https://www.themoviedb.org/search?query=%s' },
 				{ name: 'BGG',
 				  url:  'https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=%s' },
+				{ name: 'Amazon.com',
+					url:  'http://www.amazon.com/s/?field-keywords=%s' },
+				{ name: 'Amazon.co.jp',
+					url:  'http://www.amazon.co.jp/s/?field-keywords=%s' },
 			];
 
 
@@ -157,7 +161,7 @@
 			searches.map((obj) => {
 				var button = makeEl('input', { type: 'button', value: obj.name });
 				button.addEventListener('click', function () {
-					window.location = obj.url.replace('%s', encodeURI(query.value));
+					window.location = obj.url.replace('%s', encodeURIComponent(query.value));
 				});
 				return button;
 			})
