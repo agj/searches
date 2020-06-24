@@ -74,7 +74,7 @@
   </div>
 
   <script>
-    (function () {
+    (() => {
       'use strict';
 
       const searches = [
@@ -133,12 +133,11 @@
 
       const toArray = Function.prototype.call.bind([].slice);
       const sel = document.querySelector.bind(document);
-      const makeEl = (tag, attrs) => {
-        const children = toArray(arguments, 2);
+      const makeEl = (tag, attrs, ...children) => {
         const el = document.createElement(tag);
-        if (attrs) Object.keys(attrs).forEach(function (attr) { el.setAttribute(attr, attrs[attr]) });
-        children.map(function (obj) { return typeof obj === 'string' ? document.createTextNode(obj) : obj })
-          .forEach(function (node) { el.appendChild(node) });
+        if (attrs) Object.keys(attrs).forEach((attr) => { el.setAttribute(attr, attrs[attr]) });
+        children.map((obj) => { return typeof obj === 'string' ? document.createTextNode(obj) : obj })
+          .forEach((node) => { el.appendChild(node) });
         return el;
       };
 
@@ -149,7 +148,7 @@
 
       searches.map((obj) => {
         const button = makeEl('input', { type: 'button', value: obj.name });
-        button.addEventListener('click', function () {
+        button.addEventListener('click', () => {
           window.location =
             obj.url.replace('%s',
               encodeURIComponent(query.value)
