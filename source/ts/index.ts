@@ -7,9 +7,9 @@ const onLoad = (cb: () => any) =>
     ? setTimeout(cb, 0)
     : document.addEventListener("DOMContentLoaded", cb, { once: true });
 const sel = document.querySelector.bind(document);
-const makeEl = <Attrs extends Record<string, string>>(
+const makeEl = (
   tag: string,
-  attrs?: Attrs,
+  attrs?: Record<string, string>,
   ...children: (HTMLElement | string)[]
 ): HTMLElement => {
   const el = document.createElement(tag);
