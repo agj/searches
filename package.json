@@ -1,23 +1,21 @@
 {
   "scripts": {
-    "build": "parcel build source/html/index.html --public-url ./",
+    "build": "echo 'not set up'",
     "prebuild": "rm -rf dist",
-    "develop": "parcel source/html/index.html",
+    "develop": "echo 'not set up'",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
+    "elm": "^0.19.1-5",
+    "elm-format": "0.8.5",
+    "elmstatic": "^0.7.2",
     "gh-pages": "^3.2.2",
-    "parcel": "^2.0.0-beta.2",
-    "prettier": "2.3.1",
-    "typescript": "^4.3.4"
+    "prettier": "2.3.1"
   },
   "engines": {
     "node": ">=14.x"
   },
   "type": "module",
-  "private": true,
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-beta.2"
-  }
+  "private": true
 }
