@@ -1,8 +1,5 @@
 dist/
 
-.cache/
-gen/
-
 node_modules
 **/npm-debug.log
 .parcel-cache
