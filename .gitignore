@@ -1,4 +1,7 @@
-_site
+dist/
+
+.cache/
+gen/
 
 node_modules
 **/npm-debug.log

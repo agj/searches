@@ -1,14 +1,16 @@
 {
   "scripts": {
-    "build": "echo 'not set up'",
-    "prebuild": "rm -rf dist",
-    "develop": "echo 'not set up'",
+    "build": "elm-pages build",
+    "develop": "elm-pages develop",
+    "serve": "python3 -m http.server 3000 --directory ./dist/",
+    "preserve": "npm run build",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
     "elm": "^0.19.1-5",
     "elm-format": "0.8.5",
+    "elm-pages": "^1.5.5",
     "elmstatic": "^0.7.2",
     "gh-pages": "^3.2.2",
     "prettier": "2.3.1"
