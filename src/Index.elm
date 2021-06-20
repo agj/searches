@@ -25,7 +25,7 @@ index flags =
             Starter.FileNames.fileNames flags.version flags.commit
     in
     html
-        [ lang "en" ]
+        [ lang "zh" ]
         [ head []
             ([]
                 ++ [ meta [ charset "utf-8" ] []
@@ -33,55 +33,16 @@ index flags =
                    , meta [ name "author", content flags.author ] []
                    , meta [ name "description", content flags.description ] []
                    , meta [ name "viewport", content "width=device-width, initial-scale=1, shrink-to-fit=no" ] []
-                   , meta [ httpEquiv "x-ua-compatible", content "ie=edge" ] []
-                   , link [ rel "canonical", href flags.homepage ] []
-                   , link [ rel "icon", href (Starter.Icon.iconFileName relative 64) ] []
-                   , link [ rel "apple-touch-icon", href (Starter.Icon.iconFileName relative 152) ] []
-                   , style_ []
-                        [ text <| """
-                            body 
-                                { background-color: """ ++ Starter.Flags.toThemeColor flags ++ """
-                                ; font-family: 'IBM Plex Sans', helvetica, sans-serif
-                                ; margin: 0px;
-                                }""" ]
                    ]
-                ++ Starter.SnippetHtml.messagesStyle
-                ++ Starter.SnippetHtml.pwa
-                    { commit = flags.commit
-                    , relative = relative
-                    , themeColor = Starter.Flags.toThemeColor flags
-                    , version = flags.version
-                    }
-                ++ Starter.SnippetHtml.previewCards
-                    { commit = flags.commit
-                    , flags = flags
-                    , mainConf = Main.conf
-                    , version = flags.version
-                    }
             )
         , body []
             ([]
-                -- Friendly message in case Javascript is disabled
-                ++ (if flags.env == "dev" then
-                        Starter.SnippetHtml.messageYouNeedToEnableJavascript
-
-                    else
-                        Starter.SnippetHtml.messageEnableJavascriptForBetterExperience
-                   )
-                -- "Loading..." message
-                ++ Starter.SnippetHtml.messageLoading
                 -- The DOM node that Elm will take over
                 ++ [ div [ id "elm" ] [] ]
-                -- Activating the "Loading..." message
-                ++ Starter.SnippetHtml.messageLoadingOn
                 -- Loading Elm code
                 ++ [ script [ src (relative ++ fileNames.outputCompiledJsProd) ] [] ]
-                -- Elm finished to load, de-activating the "Loading..." message
-                ++ Starter.SnippetHtml.messageLoadingOff
                 -- Loading utility for pretty console formatting
                 ++ Starter.SnippetHtml.prettyConsoleFormatting relative flags.env
-                -- Signature "Made with ❤ and Elm"
-                ++ [ script [] [ textUnescaped Starter.SnippetJavascript.signature ] ]
                 -- Initializing "window.ElmStarter"
                 ++ [ script [] [ textUnescaped <| Starter.SnippetJavascript.metaInfo flags ] ]
                 -- Let's start Elm!
@@ -108,8 +69,6 @@ index flags =
                             )
                         ]
                    ]
-                -- Register the Service Worker, we are a PWA!
-                ++ [ script [] [ textUnescaped (Starter.SnippetJavascript.registerServiceWorker relative) ] ]
             )
         ]
 
