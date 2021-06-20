@@ -53,10 +53,6 @@ type alias Model =
 
 type alias Flags =
     { starter : Starter.Flags.Flags
-    , width : Int
-    , height : Int
-    , languages : List String
-    , locationHref : String
     }
 
 

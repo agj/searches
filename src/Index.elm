@@ -56,15 +56,9 @@ index flags =
                                     { starter : """
                                 ++ Starter.SnippetJavascript.metaInfoData flags
                                 ++ """ 
-                                    , width: window.innerWidth
-                                    , height: window.innerHeight
-                                    , languages: window.navigator.userLanguages || window.navigator.languages || []
-                                    , locationHref: location.href
                                     }
                                 }
                             );"""
-                                ++ Starter.SnippetJavascript.portOnUrlChange
-                                ++ Starter.SnippetJavascript.portPushUrl
                                 ++ Starter.SnippetJavascript.portChangeMeta
                             )
                         ]
