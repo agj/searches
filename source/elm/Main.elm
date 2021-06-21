@@ -1,8 +1,11 @@
 module Main exposing (main)
 
 import Browser
-import Element
-import Html
+import Element exposing (Element, column, fill, padding, width)
+import Element.Background as Background
+import Element.Font as Font
+import Element.Input exposing (labelHidden, multiline, placeholder)
+import Palette
 
 
 
@@ -69,10 +72,37 @@ view : Model -> Browser.Document Msg
 view model =
     { title = "Searches"
     , body =
-        [ Html.text "Helloooo!" ]
-
-    -- [ Element.layout [] (Element.text "Hello World!") ]
+        [ Element.layout
+            [ Background.color Palette.dark
+            ]
+            viewMain
+        ]
     }
+
+
+viewMain : Element Msg
+viewMain =
+    column
+        [ Font.color Palette.light
+        , width fill
+        , padding 10
+        ]
+        [ viewInput "text"
+        ]
+
+
+viewInput : String -> Element Msg
+viewInput text =
+    multiline
+        [ width fill
+        , Font.color Palette.dark
+        ]
+        { text = text
+        , onChange = always NoOp
+        , label = labelHidden "Text to search"
+        , placeholder = Just (placeholder [] (Element.text "Enter your text"))
+        , spellcheck = False
+        }
 
 
 
