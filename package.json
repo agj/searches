@@ -3,14 +3,17 @@
     "build": "parcel build source/html/index.html --public-url ./",
     "prebuild": "rm -rf dist",
     "develop": "parcel source/html/index.html",
+    "serve": "python3 -m http.server 1234 --directory ./dist/",
+    "preserve": "npm run build",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
+    "elm": "^0.19.1-5",
+    "elm-format": "0.8.5",
     "gh-pages": "^3.2.2",
-    "parcel": "^2.0.0-beta.2",
-    "prettier": "2.3.1",
-    "typescript": "^4.3.4"
+    "parcel": "^2.0.0-beta.3.1",
+    "prettier": "2.3.1"
   },
   "engines": {
     "node": ">=14.x"
@@ -18,6 +21,6 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-beta.2"
+    "@parcel/transformer-elm": "^2.0.0-beta.3.1"
   }
 }
