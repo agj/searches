@@ -10,7 +10,7 @@ import Element.Input exposing (button, focusedOnLoad, labelHidden, multiline, pl
 import Levers
 import Maybe.Extra as Maybe
 import Palette
-import Search exposing (QueryUrl, Search)
+import Search exposing (Search)
 import Searches
 import Url exposing (Url)
 import Url.Builder
@@ -41,6 +41,7 @@ main =
 type alias Model =
     { query : String
     , navigationKey : Navigation.Key
+    , currentUrl : Url
     }
 
 
@@ -56,6 +57,7 @@ init : Flags -> Url -> Navigation.Key -> ( Model, Cmd Msg )
 init flags url navKey =
     ( { query = parseUrlQuery url
       , navigationKey = navKey
+      , currentUrl = url
       }
     , Cmd.none
     )
@@ -89,17 +91,17 @@ update msg model =
 
         PressedButton search ->
             ( model
-            , navigate model.navigationKey model.query search
+            , navigate model.navigationKey model.currentUrl model.query search
             )
 
         NoOp ->
             ( model, Cmd.none )
 
 
-navigate : Navigation.Key -> String -> Search -> Cmd Msg
-navigate navKey query search =
+navigate : Navigation.Key -> Url -> String -> Search -> Cmd Msg
+navigate navKey curUrl query search =
     Cmd.batch
-        [ Navigation.replaceUrl navKey (queryToUrl query)
+        [ Navigation.replaceUrl navKey (queryToUrl curUrl query)
         , if Levers.disableSearch == False then
             Navigation.load (Search.toUrl query search.url)
 
@@ -108,10 +110,10 @@ navigate navKey query search =
         ]
 
 
-queryToUrl : String -> String
-queryToUrl query =
-    Url.Builder.absolute []
-        [ Url.Builder.string "q" query ]
+queryToUrl : Url -> String -> String
+queryToUrl curUrl query =
+    { curUrl | query = Just ("q=" ++ Url.percentEncode query) }
+        |> Url.toString
 
 
 
