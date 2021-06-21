@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Navigation
-import Element exposing (Element, column, fill, height, maximum, minimum, padding, paddingXY, px, shrink, spacing, width, wrappedRow)
+import Element exposing (Element, column, fill, height, padding, paddingXY, px, spacing, width, wrappedRow)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
@@ -13,7 +13,6 @@ import Palette
 import Search exposing (Search)
 import Searches
 import Url exposing (Url)
-import Url.Builder
 import Url.Parser
 import Url.Parser.Query as Query
 
