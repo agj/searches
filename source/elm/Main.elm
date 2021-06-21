@@ -1,11 +1,14 @@
 module Main exposing (main)
 
 import Browser
-import Element exposing (Element, column, fill, padding, width)
+import Element exposing (Element, column, fill, focused, padding, paddingXY, spacing, width, wrappedRow)
 import Element.Background as Background
+import Element.Border as Border
+import Element.Events exposing (onFocus, onLoseFocus)
 import Element.Font as Font
-import Element.Input exposing (labelHidden, multiline, placeholder)
+import Element.Input exposing (button, labelHidden, multiline, placeholder)
 import Palette
+import Searches exposing (Search)
 
 
 
@@ -27,7 +30,8 @@ main =
 
 
 type alias Model =
-    {}
+    { query : String
+    }
 
 
 
@@ -40,7 +44,8 @@ type alias Flags =
 
 init : Flags -> ( Model, Cmd Msg )
 init flags =
-    ( {}
+    ( { query = ""
+      }
     , Cmd.none
     )
 
@@ -50,7 +55,7 @@ init flags =
 
 
 type Msg
-    = NoOp
+    = EnteredText String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -60,8 +65,10 @@ update msg model =
             ( model, Cmd.none )
     in
     case msg of
-        NoOp ->
-            ignore
+        EnteredText newText ->
+            ( { model | query = newText }
+            , Cmd.none
+            )
 
 
 
@@ -75,19 +82,21 @@ view model =
         [ Element.layout
             [ Background.color Palette.dark
             ]
-            viewMain
+            (viewMain model.query)
         ]
     }
 
 
-viewMain : Element Msg
-viewMain =
+viewMain : String -> Element Msg
+viewMain query =
     column
         [ Font.color Palette.light
         , width fill
         , padding 10
+        , spacing 10
         ]
-        [ viewInput "text"
+        [ viewInput query
+        , viewButtons
         ]
 
 
@@ -95,14 +104,57 @@ viewInput : String -> Element Msg
 viewInput text =
     multiline
         [ width fill
-        , Font.color Palette.dark
+        , Background.color Palette.clear
+        , Border.widthEach { sides | bottom = 2 }
+        , Border.rounded 0
+        , Element.focused
+            [ Border.color Palette.highlight
+            ]
+        , Border.color
+            Palette.light
+        , paddingXY 0 10
         ]
         { text = text
-        , onChange = always NoOp
-        , label = labelHidden "Text to search"
-        , placeholder = Just (placeholder [] (Element.text "Enter your text"))
+        , onChange = EnteredText
+        , label = labelHidden "輸入你的検索關鍵詞"
+        , placeholder = Just (placeholder [] (Element.text "検索内容"))
         , spellcheck = False
         }
+
+
+viewButtons : Element Msg
+viewButtons =
+    wrappedRow [ spacing 5 ]
+        (List.map viewButton Searches.searches)
+
+
+viewButton : Search -> Element Msg
+viewButton search =
+    button
+        [ Background.color Palette.gray
+        , paddingXY 5 5
+        ]
+        { onPress = Nothing
+        , label = Element.text search.name
+        }
+
+
+
+-- VIEW UTILS
+
+
+sides :
+    { left : Int
+    , right : Int
+    , top : Int
+    , bottom : Int
+    }
+sides =
+    { left = 0
+    , right = 0
+    , top = 0
+    , bottom = 0
+    }
 
 
 
