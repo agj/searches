@@ -29,7 +29,7 @@ searches =
     , { name = "Y!辞書"
       , url = s "http://dic.search.yahoo.co.jp/dsearch?p=" "&dic_id=jj&stype=prefix&b=1"
       }
-    , { name = "英→英"
+    , { name = "英"
       , url = s "http://www.thefreedictionary.com/" ""
       }
     , { name = "西→英"
