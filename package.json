@@ -1,24 +1,6 @@
 {
-  "name": "searches",
-  "nameLong": "Searches",
-  "description": "My mobile browser's home page, with easy access to search.",
-  "author": "agj",
-  "homepage": "https://agj.github.io/searches/",
-  "license": "Unlicense",
-  "version": "1.0.0",
   "scripts": {
-    "start": "node ./src-elm-starter/elm-starter start",
-    "build": "node ./src-elm-starter/elm-starter build",
-    "serverBuild": "node ./src-elm-starter/elm-starter serverBuild",
-    "elm-starter:boot": "node ./src-elm-starter/elm-starter boot",
-    "elm-starter:start": "node ./src-elm-starter/elm-starter start",
-    "elm-starter:generateDevFiles": "node ./src-elm-starter/elm-starter generateDevFiles",
-    "elm-starter:build": "node ./src-elm-starter/elm-starter build",
-    "elm-starter:buildExpectingTheServerRunning": "node ./src-elm-starter/elm-starter buildExpectingTheServerRunning",
-    "elm-starter:serverBuild": "node ./src-elm-starter/elm-starter serverBuild",
-    "elm-starter:serverDev": "node ./src-elm-starter/elm-starter serverDev",
-    "elm-starter:serverStatic": "node ./src-elm-starter/elm-starter serverStatic",
-    "elm-starter:watchStartElm": "node ./src-elm-starter/elm-starter watchStartElm",
+    "build": "echo 'not set up'",
     "develop": "echo 'not set up'",
     "serve": "python3 -m http.server 3000 --directory ./dist/",
     "preserve": "npm run build",
@@ -31,16 +13,9 @@
     "gh-pages": "^3.2.2",
     "prettier": "2.3.1"
   },
-  "devDependencies": {
-    "chokidar-cli": "^2.1.0",
-    "concurrently": "^5.2.0",
-    "elm-go": "^5.0.10",
-    "html-minifier": "^4.0.0",
-    "puppeteer": "^4.0.1",
-    "terser": "^4.8.0"
-  },
   "engines": {
     "node": ">=14.x"
   },
+  "type": "module",
   "private": true
 }
