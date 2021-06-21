@@ -1,93 +1,94 @@
-module Searches exposing (..)
+module Searches exposing (searches)
 
-
-type alias Search =
-    { name : String
-    , url : String
-    }
+import Search exposing (QueryUrl, Search, queryUrl)
 
 
 searches : List Search
 searches =
     [ { name = "Duck"
-      , url = "https://duckduckgo.com/?q=%s"
+      , url = s "https://duckduckgo.com/?q=" ""
       }
     , { name = "Google"
-      , url = "http://www.google.com/search?q=%s"
+      , url = s "http://www.google.com/search?q=" ""
       }
     , { name = "goo"
-      , url = "https://dictionary.goo.ne.jp/freewordsearcher.html?MT=%s&mode=0&kind=all"
+      , url = s "https://dictionary.goo.ne.jp/freewordsearcher.html?MT=" "&mode=0&kind=all"
       }
     , { name = "ALC"
-      , url = "http://eow.alc.co.jp/%s"
+      , url = s "http://eow.alc.co.jp/" ""
       }
     , { name = "jisho"
-      , url = "http://jisho.org/search/%s"
+      , url = s "http://jisho.org/search/" ""
       }
     , { name = "日 類語"
-      , url = "http://thesaurus.weblio.jp/content_find?query=%s&searchType=exact"
+      , url = s "http://thesaurus.weblio.jp/content_find?query=" "&searchType=exact"
       }
     , { name = "数え方"
-      , url = "http://www.sanabo.com/kazoekata/?s=%s"
+      , url = s "http://www.sanabo.com/kazoekata/?s=" ""
       }
     , { name = "Y!辞書"
-      , url = "http://dic.search.yahoo.co.jp/dsearch?p=%s&dic_id=jj&stype=prefix&b=1"
+      , url = s "http://dic.search.yahoo.co.jp/dsearch?p=" "&dic_id=jj&stype=prefix&b=1"
       }
     , { name = "英→英"
-      , url = "http://www.thefreedictionary.com/%s"
+      , url = s "http://www.thefreedictionary.com/" ""
       }
     , { name = "西→英"
-      , url = "http://www.wordreference.com/enit/translation.asp?dict=esen&w=%s"
+      , url = s "http://www.wordreference.com/enit/translation.asp?dict=esen&w=" ""
       }
     , { name = "英 類語"
-      , url = "http://thesaurus.com/browse/%s"
+      , url = s "http://thesaurus.com/browse/" ""
       }
     , { name = "RAE"
-      , url = "https://dle.rae.es/?w=%s"
+      , url = s "https://dle.rae.es/?w=" ""
       }
     , { name = "仏→英"
-      , url = "http://www.wordreference.com/enit/translation.asp?enit=%s&dict=fren"
+      , url = s "http://www.wordreference.com/enit/translation.asp?enit=" "&dict=fren"
       }
     , { name = "Linguee英中"
-      , url = "https://www.linguee.com/english-chinese/search?query=%s"
+      , url = s "https://www.linguee.com/english-chinese/search?query=" ""
       }
     , { name = "Linguee英日"
-      , url = "https://www.linguee.com/english-japanese/search?query=%s"
+      , url = s "https://www.linguee.com/english-japanese/search?query=" ""
       }
     , { name = "Linguee西英"
-      , url = "https://www.linguee.com/english-spanish/search?query=%s"
+      , url = s "https://www.linguee.com/english-spanish/search?query=" ""
       }
     , { name = "Wiki中"
-      , url = "http://zh.wikipedia.org/w/index.php?search=%s"
+      , url = s "http://zh.wikipedia.org/w/index.php?search=" ""
       }
     , { name = "Wiki日"
-      , url = "http://ja.wikipedia.org/w/index.php?search=%s"
+      , url = s "http://ja.wikipedia.org/w/index.php?search=" ""
       }
     , { name = "Wiki英"
-      , url = "http://en.wikipedia.org/w/index.php?search=%s"
+      , url = s "http://en.wikipedia.org/w/index.php?search=" ""
       }
     , { name = "Wiki西"
-      , url = "http://es.wikipedia.org/w/index.php?search=%s"
+      , url = s "http://es.wikipedia.org/w/index.php?search=" ""
       }
     , { name = "画像"
-      , url = "http://www.google.com/search?safe=off&tbm=isch&q=%s"
+      , url = s "http://www.google.com/search?safe=off&tbm=isch&q=" ""
       }
     , { name = "動画"
-      , url = "https://www.google.com/search?safe=off&tbm=vid&q=%s"
+      , url = s "https://www.google.com/search?safe=off&tbm=vid&q=" ""
       }
     , { name = "nico"
-      , url = "http://www.nicovideo.jp/search/%s"
+      , url = s "http://www.nicovideo.jp/search/" ""
       }
     , { name = "TMDb"
-      , url = "https://www.themoviedb.org/search?query=%s"
+      , url = s "https://www.themoviedb.org/search?query=" ""
       }
     , { name = "BGG"
-      , url = "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=%s"
+      , url = s "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=" ""
       }
     , { name = "Amazon.com"
-      , url = "http://www.amazon.com/s/?field-keywords=%s"
+      , url = s "http://www.amazon.com/s/?field-keywords=" ""
       }
     , { name = "Amazon.co.jp"
-      , url = "http://www.amazon.co.jp/s/?field-keywords=%s"
+      , url = s "http://www.amazon.co.jp/s/?field-keywords=" ""
       }
     ]
+
+
+s : String -> String -> QueryUrl
+s =
+    queryUrl

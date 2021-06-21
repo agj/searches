@@ -1,6 +1,7 @@
 module Main exposing (main)
 
 import Browser
+import Browser.Navigation as Navigation
 import Element exposing (Element, column, fill, focused, padding, paddingXY, spacing, width, wrappedRow)
 import Element.Background as Background
 import Element.Border as Border
@@ -8,7 +9,8 @@ import Element.Events exposing (onFocus, onLoseFocus)
 import Element.Font as Font
 import Element.Input exposing (button, labelHidden, multiline, placeholder)
 import Palette
-import Searches exposing (Search)
+import Search exposing (QueryUrl, Search)
+import Searches
 
 
 
@@ -56,6 +58,7 @@ init flags =
 
 type Msg
     = EnteredText String
+    | PressedButton QueryUrl
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -68,6 +71,11 @@ update msg model =
         EnteredText newText ->
             ( { model | query = newText }
             , Cmd.none
+            )
+
+        PressedButton queryUrl ->
+            ( model
+            , Navigation.load (Search.toUrl model.query queryUrl)
             )
 
 
@@ -134,7 +142,7 @@ viewButton search =
         [ Background.color Palette.gray
         , paddingXY 5 5
         ]
-        { onPress = Nothing
+        { onPress = Just (PressedButton search.url)
         , label = Element.text search.name
         }
 
