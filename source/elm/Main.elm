@@ -6,7 +6,7 @@ import Element exposing (Element, column, fill, height, maximum, minimum, paddin
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
-import Element.Input exposing (button, labelHidden, multiline, placeholder)
+import Element.Input exposing (button, focusedOnLoad, labelHidden, multiline, placeholder)
 import Levers
 import Palette
 import Search exposing (QueryUrl, Search)
@@ -89,7 +89,7 @@ view model =
     , body =
         [ Element.layout
             [ Background.color Palette.dark
-            , Font.size 18
+            , Font.size 16
             ]
             (viewMain model.query)
         ]
@@ -116,9 +116,10 @@ viewInput text =
         , Background.color Palette.clear
         , Border.widthEach { sides | bottom = 2 }
         , Border.rounded 0
-        , Border.color
-            Palette.light
+        , Border.color Palette.lightish
         , paddingXY 0 10
+        , Font.size 21
+        , focusedOnLoad
         , Element.focused
             [ Border.color Palette.highlight
             ]
@@ -126,7 +127,11 @@ viewInput text =
         { text = text
         , onChange = EnteredText
         , label = labelHidden "輸入你的検索關鍵詞"
-        , placeholder = Just (placeholder [] (Element.text "検索内容"))
+        , placeholder =
+            Just
+                (placeholder [ Font.color Palette.lightish ]
+                    (Element.text "検索内容")
+                )
         , spellcheck = False
         }
 
@@ -140,13 +145,16 @@ viewButtons =
 viewButton : Search -> Element Msg
 viewButton search =
     button
-        [ Background.color Palette.gray
+        [ Background.color Palette.darkish
         , paddingXY 10 10
         , height (px 50)
         , width fill
         , Font.center
         , Border.rounded 5
-        , Element.focused [ Background.color Palette.highlight ]
+        , Element.focused
+            [ Background.color Palette.highlight
+            , Font.color Palette.dark
+            ]
         ]
         { onPress = Just (PressedButton search)
         , label = Element.text search.name

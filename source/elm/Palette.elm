@@ -13,9 +13,14 @@ light =
     rgb 0.9 0.9 0.9
 
 
-gray : Color
-gray =
+darkish : Color
+darkish =
     rgb 0.2 0.2 0.2
+
+
+lightish : Color
+lightish =
+    rgb 0.6 0.6 0.6
 
 
 clear : Color
