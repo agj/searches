@@ -1,6 +1,6 @@
 module Palette exposing (..)
 
-import Element exposing (Color, rgb, rgba)
+import Element exposing (Color, rgb, rgb255, rgba)
 
 
 dark : Color
@@ -10,12 +10,12 @@ dark =
 
 light : Color
 light =
-    rgb 1 1 1
+    rgb 0.9 0.9 0.9
 
 
 gray : Color
 gray =
-    rgb 0.3 0.3 0.3
+    rgb 0.2 0.2 0.2
 
 
 clear : Color
@@ -25,4 +25,4 @@ clear =
 
 highlight : Color
 highlight =
-    rgb 1 0 1
+    rgb255 249 201 55

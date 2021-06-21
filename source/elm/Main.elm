@@ -2,12 +2,12 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Navigation
-import Element exposing (Element, column, fill, focused, padding, paddingXY, spacing, width, wrappedRow)
+import Element exposing (Element, column, fill, height, maximum, minimum, padding, paddingXY, px, shrink, spacing, width, wrappedRow)
 import Element.Background as Background
 import Element.Border as Border
-import Element.Events exposing (onFocus, onLoseFocus)
 import Element.Font as Font
 import Element.Input exposing (button, labelHidden, multiline, placeholder)
+import Levers
 import Palette
 import Search exposing (QueryUrl, Search)
 import Searches
@@ -58,24 +58,24 @@ init flags =
 
 type Msg
     = EnteredText String
-    | PressedButton QueryUrl
+    | PressedButton Search
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    let
-        ignore =
-            ( model, Cmd.none )
-    in
     case msg of
         EnteredText newText ->
             ( { model | query = newText }
             , Cmd.none
             )
 
-        PressedButton queryUrl ->
+        PressedButton search ->
             ( model
-            , Navigation.load (Search.toUrl model.query queryUrl)
+            , if Levers.disableSearch == False then
+                Navigation.load (Search.toUrl model.query search.url)
+
+              else
+                Cmd.none
             )
 
 
@@ -89,6 +89,7 @@ view model =
     , body =
         [ Element.layout
             [ Background.color Palette.dark
+            , Font.size 18
             ]
             (viewMain model.query)
         ]
@@ -101,7 +102,7 @@ viewMain query =
         [ Font.color Palette.light
         , width fill
         , padding 10
-        , spacing 10
+        , spacing 20
         ]
         [ viewInput query
         , viewButtons
@@ -115,12 +116,12 @@ viewInput text =
         , Background.color Palette.clear
         , Border.widthEach { sides | bottom = 2 }
         , Border.rounded 0
-        , Element.focused
-            [ Border.color Palette.highlight
-            ]
         , Border.color
             Palette.light
         , paddingXY 0 10
+        , Element.focused
+            [ Border.color Palette.highlight
+            ]
         ]
         { text = text
         , onChange = EnteredText
@@ -132,7 +133,7 @@ viewInput text =
 
 viewButtons : Element Msg
 viewButtons =
-    wrappedRow [ spacing 5 ]
+    wrappedRow [ spacing 10 ]
         (List.map viewButton Searches.searches)
 
 
@@ -140,9 +141,14 @@ viewButton : Search -> Element Msg
 viewButton search =
     button
         [ Background.color Palette.gray
-        , paddingXY 5 5
+        , paddingXY 10 10
+        , height (px 50)
+        , width fill
+        , Font.center
+        , Border.rounded 5
+        , Element.focused [ Background.color Palette.highlight ]
         ]
-        { onPress = Just (PressedButton search.url)
+        { onPress = Just (PressedButton search)
         , label = Element.text search.name
         }
 
