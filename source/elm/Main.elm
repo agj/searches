@@ -8,9 +8,14 @@ import Element.Border as Border
 import Element.Font as Font
 import Element.Input exposing (button, focusedOnLoad, labelHidden, multiline, placeholder)
 import Levers
+import Maybe.Extra as Maybe
 import Palette
 import Search exposing (QueryUrl, Search)
 import Searches
+import Url exposing (Url)
+import Url.Builder
+import Url.Parser
+import Url.Parser.Query as Query
 
 
 
@@ -19,11 +24,13 @@ import Searches
 
 main : Program Flags Model Msg
 main =
-    Browser.document
+    Browser.application
         { init = init
         , view = view
         , update = update
         , subscriptions = subscriptions
+        , onUrlChange = always NoOp
+        , onUrlRequest = always NoOp
         }
 
 
@@ -33,6 +40,7 @@ main =
 
 type alias Model =
     { query : String
+    , navigationKey : Navigation.Key
     }
 
 
@@ -44,12 +52,21 @@ type alias Flags =
     {}
 
 
-init : Flags -> ( Model, Cmd Msg )
-init flags =
-    ( { query = ""
+init : Flags -> Url -> Navigation.Key -> ( Model, Cmd Msg )
+init flags url navKey =
+    ( { query = parseUrlQuery url
+      , navigationKey = navKey
       }
     , Cmd.none
     )
+
+
+parseUrlQuery : Url -> String
+parseUrlQuery url =
+    url
+        |> Url.Parser.parse (Url.Parser.query (Query.string "q"))
+        |> Maybe.join
+        |> Maybe.withDefault ""
 
 
 
@@ -59,6 +76,7 @@ init flags =
 type Msg
     = EnteredText String
     | PressedButton Search
+    | NoOp
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -71,12 +89,29 @@ update msg model =
 
         PressedButton search ->
             ( model
-            , if Levers.disableSearch == False then
-                Navigation.load (Search.toUrl model.query search.url)
-
-              else
-                Cmd.none
+            , navigate model.navigationKey model.query search
             )
+
+        NoOp ->
+            ( model, Cmd.none )
+
+
+navigate : Navigation.Key -> String -> Search -> Cmd Msg
+navigate navKey query search =
+    Cmd.batch
+        [ Navigation.replaceUrl navKey (queryToUrl query)
+        , if Levers.disableSearch == False then
+            Navigation.load (Search.toUrl query search.url)
+
+          else
+            Cmd.none
+        ]
+
+
+queryToUrl : String -> String
+queryToUrl query =
+    Url.Builder.absolute []
+        [ Url.Builder.string "q" query ]
 
 
 
