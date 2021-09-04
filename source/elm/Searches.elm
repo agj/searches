@@ -65,11 +65,11 @@ searches =
     , { name = "Wiki西"
       , url = s "http://es.wikipedia.org/w/index.php?search=" ""
       }
-    , { name = "画像"
-      , url = s "http://www.google.com/search?safe=off&tbm=isch&q=" ""
+    , { name = "圖片"
+      , url = s "https://duckduckgo.com/?q=" "&iax=images&ia=images"
       }
-    , { name = "動画"
-      , url = s "https://www.google.com/search?safe=off&tbm=vid&q=" ""
+    , { name = "影片" 
+      , url = s "https://duckduckgo.com/?q=" "&iax=videos&ia=videos"
       }
     , { name = "nico"
       , url = s "http://www.nicovideo.jp/search/" ""
