@@ -11,9 +11,9 @@
   "dependencies": {
     "elm": "^0.19.1-5",
     "elm-format": "0.8.5",
-    "gh-pages": "^3.2.2",
-    "parcel": "^2.0.0-beta.3.1",
-    "prettier": "2.3.1"
+    "gh-pages": "^3.2.3",
+    "parcel": "^2.0.0-rc.0",
+    "prettier": "2.3.2"
   },
   "engines": {
     "node": ">=14.x"
@@ -21,6 +21,6 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@parcel/transformer-elm": "^2.0.0-beta.3.1"
+    "@parcel/transformer-elm": "^2.0.0-rc.0"
   }
 }
