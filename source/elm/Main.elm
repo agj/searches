@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Navigation
-import Element exposing (Element, column, fill, height, padding, paddingXY, px, spacing, width, wrappedRow)
+import Element exposing (Color, Element, column, fill, height, padding, paddingXY, px, spacing, width, wrappedRow)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
@@ -10,7 +10,7 @@ import Element.Input exposing (button, focusedOnLoad, labelHidden, multiline, pl
 import Levers
 import Maybe.Extra as Maybe
 import Palette
-import Search exposing (Search)
+import Search exposing (Search, SearchGroup)
 import Searches
 import Url exposing (Url)
 import Url.Parser
@@ -175,11 +175,18 @@ viewInput text =
 viewButtons : Element Msg
 viewButtons =
     wrappedRow [ spacing 10 ]
-        (List.map viewButton Searches.searches)
+        (List.map viewButtonGroup Searches.searches
+            |> List.concat
+        )
 
 
-viewButton : Search -> Element Msg
-viewButton search =
+viewButtonGroup : SearchGroup -> List (Element Msg)
+viewButtonGroup searchGroup =
+    List.map (viewButton searchGroup.name) searchGroup.searches
+
+
+viewButton : String -> Search -> Element Msg
+viewButton groupName search =
     button
         [ Background.color Palette.darkish
         , paddingXY 10 10

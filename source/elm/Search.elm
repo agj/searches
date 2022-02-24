@@ -1,4 +1,4 @@
-module Search exposing (Query, QueryUrl, Search, Url, queryUrl, toUrl)
+module Search exposing (Query, QueryUrl, Search, SearchGroup, Url, queryUrl, toUrl)
 
 import Url exposing (percentEncode)
 
@@ -6,6 +6,12 @@ import Url exposing (percentEncode)
 type alias Search =
     { name : String
     , url : QueryUrl
+    }
+
+
+type alias SearchGroup =
+    { name : String
+    , searches : List Search
     }
 
 
