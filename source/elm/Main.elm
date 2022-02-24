@@ -10,7 +10,7 @@ import Element.Input exposing (button, focusedOnLoad, labelHidden, multiline, pl
 import Levers
 import Maybe.Extra as Maybe
 import Palette
-import Search exposing (Search, SearchGroup)
+import Search exposing (Search)
 import Searches
 import Url exposing (Url)
 import Url.Parser
@@ -175,20 +175,19 @@ viewInput text =
 viewButtons : Element Msg
 viewButtons =
     wrappedRow [ spacing 10 ]
-        (List.map viewButtonGroup Searches.searches
+        ([ List.map (viewButton Palette.darkish) Searches.searches.regular
+         , List.map (viewButton Palette.darkish) Searches.searches.dictionaries
+         , List.map (viewButton Palette.darkish) Searches.searches.images
+         , List.map (viewButton Palette.darkish) Searches.searches.wikipedia
+         ]
             |> List.concat
         )
 
 
-viewButtonGroup : SearchGroup -> List (Element Msg)
-viewButtonGroup searchGroup =
-    List.map (viewButton searchGroup.name) searchGroup.searches
-
-
-viewButton : String -> Search -> Element Msg
-viewButton groupName search =
+viewButton : Color -> Search -> Element Msg
+viewButton color search =
     button
-        [ Background.color Palette.darkish
+        [ Background.color color
         , paddingXY 10 10
         , height (px 50)
         , width fill
