@@ -14,6 +14,7 @@ type alias GroupedSearches =
     , dictionaries : List Search
     , images : List Search
     , wikipedia : List Search
+    , other : List Search
     }
 
 

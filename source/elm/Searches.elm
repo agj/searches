@@ -12,18 +12,6 @@ searches =
         , { name = "Google"
           , url = s "http://www.google.com/search?q=" ""
           }
-        , { name = "TMDb"
-          , url = s "https://www.themoviedb.org/search?query=" ""
-          }
-        , { name = "BGG"
-          , url = s "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=" ""
-          }
-        , { name = "Amazon.com"
-          , url = s "http://www.amazon.com/s/?field-keywords=" ""
-          }
-        , { name = "Amazon.co.jp"
-          , url = s "http://www.amazon.co.jp/s/?field-keywords=" ""
-          }
         ]
     , dictionaries =
         [ { name = "goo"
@@ -92,6 +80,20 @@ searches =
           }
         , { name = "Wiki西"
           , url = s "http://es.wikipedia.org/w/index.php?search=" ""
+          }
+        ]
+    , other =
+        [ { name = "TMDb"
+          , url = s "https://www.themoviedb.org/search?query=" ""
+          }
+        , { name = "BGG"
+          , url = s "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=" ""
+          }
+        , { name = "Amazon.com"
+          , url = s "http://www.amazon.com/s/?field-keywords=" ""
+          }
+        , { name = "Amazon.co.jp"
+          , url = s "http://www.amazon.co.jp/s/?field-keywords=" ""
           }
         ]
     }
