@@ -36,7 +36,7 @@ searches =
           , url = s "http://www.thefreedictionary.com/" ""
           }
         , { name = "西→英"
-          , url = s "http://www.wordreference.com/enit/translation.asp?dict=esen&w=" ""
+          , url = s "http://www.wordreference.com/esen/" ""
           }
         , { name = "英 類語"
           , url = s "http://thesaurus.com/browse/" ""
@@ -45,7 +45,7 @@ searches =
           , url = s "https://dle.rae.es/?w=" ""
           }
         , { name = "仏→英"
-          , url = s "http://www.wordreference.com/enit/translation.asp?enit=" "&dict=fren"
+          , url = s "http://www.wordreference.com/fren/" ""
           }
         , { name = "Linguee英中"
           , url = s "https://www.linguee.com/english-chinese/search?query=" ""
