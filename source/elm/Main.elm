@@ -29,7 +29,7 @@ main =
         , update = update
         , subscriptions = subscriptions
         , onUrlChange = always NoOp
-        , onUrlRequest = ChangedUrl
+        , onUrlRequest = always NoOp
         }
 
 
@@ -77,7 +77,6 @@ parseUrlQuery url =
 type Msg
     = EnteredText String
     | PressedButton Search
-    | ChangedUrl Browser.UrlRequest
     | NoOp
 
 
@@ -94,19 +93,6 @@ update msg model =
             , navigate model.navigationKey model.currentUrl model.query search
             )
 
-        ChangedUrl urlRequest ->
-            case urlRequest of
-                Browser.Internal url ->
-                    ( { model
-                        | query = parseUrlQuery url
-                        , currentUrl = url
-                      }
-                    , Cmd.none
-                    )
-
-                Browser.External _ ->
-                    ( model, Cmd.none )
-
         NoOp ->
             ( model, Cmd.none )
 
@@ -114,8 +100,8 @@ update msg model =
 navigate : Navigation.Key -> Url -> String -> Search -> Cmd Msg
 navigate navKey curUrl query search =
     Cmd.batch
-        [ Navigation.pushUrl navKey (queryToUrl curUrl query)
-        , if not Levers.disableSearch then
+        [ Navigation.replaceUrl navKey (queryToUrl curUrl query)
+        , if Levers.disableSearch == False then
             Navigation.load (Search.toUrl query search.url)
 
           else
