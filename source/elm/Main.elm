@@ -1,4 +1,4 @@
-module Main exposing (main, parseUrlQuery)
+module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Navigation
@@ -8,13 +8,11 @@ import Element.Border as Border
 import Element.Font as Font
 import Element.Input exposing (button, focusedOnLoad, labelHidden, multiline, placeholder)
 import Levers
-import Maybe.Extra as Maybe
 import Palette
 import Search exposing (Search)
 import Searches
 import Url exposing (Url)
-import Url.Parser
-import Url.Parser.Query as Query
+import Util.Url as Url
 
 
 
@@ -54,20 +52,12 @@ type alias Flags =
 
 init : Flags -> Url -> Navigation.Key -> ( Model, Cmd Msg )
 init flags url navKey =
-    ( { query = parseUrlQuery url
+    ( { query = Url.parseUrlQuery url
       , navigationKey = navKey
       , currentUrl = url
       }
     , Cmd.none
     )
-
-
-parseUrlQuery : Url -> String
-parseUrlQuery url =
-    url
-        |> Url.Parser.parse (Url.Parser.query (Query.string "q"))
-        |> Maybe.join
-        |> Maybe.withDefault ""
 
 
 
@@ -85,7 +75,7 @@ update msg model =
     case msg of
         EnteredText newText ->
             ( { model | query = newText }
-            , Navigation.replaceUrl model.navigationKey (queryToUrl model.currentUrl newText)
+            , Navigation.replaceUrl model.navigationKey (Url.queryToUrl model.currentUrl newText)
             )
 
         PressedButton search ->
@@ -104,12 +94,6 @@ navigate navKey curUrl query search =
 
     else
         Cmd.none
-
-
-queryToUrl : Url -> String -> String
-queryToUrl curUrl query =
-    { curUrl | query = Just ("q=" ++ Url.percentEncode query) }
-        |> Url.toString
 
 
 

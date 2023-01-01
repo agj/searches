@@ -1,9 +1,9 @@
-module UrlQueryParsingTest exposing (..)
+module Util.UrlTest exposing (..)
 
 import Expect
-import Main
 import Test exposing (..)
 import Url exposing (Url)
+import Util.Url
 
 
 parseUrlQuery =
@@ -12,18 +12,18 @@ parseUrlQuery =
             \_ ->
                 "http://localhost:1234/?q=myQuery"
                     |> Url.fromString
-                    |> Maybe.map Main.parseUrlQuery
+                    |> Maybe.map Util.Url.parseUrlQuery
                     |> Expect.equal (Just "myQuery")
         , test "Parse from local URL with path" <|
             \_ ->
                 "http://localhost:1234/searches/?q=myQuery"
                     |> Url.fromString
-                    |> Maybe.map Main.parseUrlQuery
+                    |> Maybe.map Util.Url.parseUrlQuery
                     |> Expect.equal (Just "myQuery")
         , test "Parse from Github Pages URL" <|
             \_ ->
                 "https://agj.github.io/searches/?q=myQuery"
                     |> Url.fromString
-                    |> Maybe.map Main.parseUrlQuery
+                    |> Maybe.map Util.Url.parseUrlQuery
                     |> Expect.equal (Just "myQuery")
         ]
