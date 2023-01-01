@@ -85,7 +85,7 @@ update msg model =
     case msg of
         EnteredText newText ->
             ( { model | query = newText }
-            , Cmd.none
+            , Navigation.replaceUrl model.navigationKey (queryToUrl model.currentUrl newText)
             )
 
         PressedButton search ->
@@ -99,14 +99,11 @@ update msg model =
 
 navigate : Navigation.Key -> Url -> String -> Search -> Cmd Msg
 navigate navKey curUrl query search =
-    Cmd.batch
-        [ Navigation.replaceUrl navKey (queryToUrl curUrl query)
-        , if Levers.disableSearch == False then
-            Navigation.load (Search.toUrl query search.url)
+    if Levers.disableSearch == False then
+        Navigation.load (Search.toUrl query search.url)
 
-          else
-            Cmd.none
-        ]
+    else
+        Cmd.none
 
 
 queryToUrl : Url -> String -> String
