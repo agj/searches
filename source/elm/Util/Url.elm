@@ -8,7 +8,7 @@ import Url.Parser.Query as Query
 
 getQQuery : Url -> String
 getQQuery url =
-    url
+    { url | path = "" }
         |> Url.Parser.parse (Url.Parser.query (Query.string "q"))
         |> Maybe.join
         |> Maybe.withDefault ""
