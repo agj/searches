@@ -52,7 +52,7 @@ type alias Flags =
 
 init : Flags -> Url -> Navigation.Key -> ( Model, Cmd Msg )
 init flags url navKey =
-    ( { query = Url.parseUrlQuery url
+    ( { query = Url.getQQuery url
       , navigationKey = navKey
       , currentUrl = url
       }
@@ -75,7 +75,7 @@ update msg model =
     case msg of
         EnteredText newText ->
             ( { model | query = newText }
-            , Navigation.replaceUrl model.navigationKey (Url.queryToUrl model.currentUrl newText)
+            , Navigation.replaceUrl model.navigationKey (Url.toStringWithQQuery model.currentUrl newText)
             )
 
         PressedButton search ->
