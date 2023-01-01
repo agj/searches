@@ -8,19 +8,19 @@ import Util.Url
 
 getQQuery =
     describe "getQQuery"
-        [ test "Parse from local URL" <|
+        [ test "From local URL" <|
             \_ ->
                 "http://localhost:1234/?q=myQuery"
                     |> Url.fromString
                     |> Maybe.map Util.Url.getQQuery
                     |> Expect.equal (Just "myQuery")
-        , test "Parse from local URL with path" <|
+        , test "From local URL with path" <|
             \_ ->
                 "http://localhost:1234/searches/?q=myQuery"
                     |> Url.fromString
                     |> Maybe.map Util.Url.getQQuery
                     |> Expect.equal (Just "myQuery")
-        , test "Parse from Github Pages URL" <|
+        , test "From Github Pages URL" <|
             \_ ->
                 "https://agj.github.io/searches/?q=myQuery"
                     |> Url.fromString
