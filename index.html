@@ -3973,7 +3973,7 @@ type alias Process =
         });
     };
     var $author$project$Main$parseUrlQuery = function(url) {
-        return A2($elm$core$Maybe$withDefault, "", $elm_community$maybe_extra$Maybe$Extra$join(A2($elm$url$Url$Parser$parse, $elm$url$Url$Parser$query($elm$url$Url$Parser$Query$string("q")), url)));
+        return A2($elm$core$Maybe$withDefault, "", $elm_community$maybe_extra$Maybe$Extra$join(A2($elm$core$Debug$log, "parse result", A2($elm$url$Url$Parser$parse, $elm$url$Url$Parser$query($elm$url$Url$Parser$Query$string("q")), url))));
     };
     var $author$project$Main$init = F3(function(flags, url, navKey) {
         return _Utils_Tuple2({
