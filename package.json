@@ -6,14 +6,8 @@
     "serve": "python3 -m http.server 1234 --directory ./dist/",
     "preserve": "npm run build",
     "deploy": "gh-pages -d dist",
-    "predeploy": "npm run build"
-  },
-  "dependencies": {
-    "elm": "^0.19.1-5",
-    "elm-format": "0.8.5",
-    "gh-pages": "^4.0.0",
-    "parcel": "^2.7.0",
-    "prettier": "2.7.1"
+    "predeploy": "npm run build",
+    "test": "npx elm-test"
   },
   "engines": {
     "node": ">=14.x"
@@ -21,6 +15,12 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@parcel/transformer-elm": "^2.7.0"
+    "elm": "^0.19.1-5",
+    "elm-format": "0.8.5",
+    "gh-pages": "^4.0.0",
+    "parcel": "^2.7.0",
+    "prettier": "2.7.1",
+    "@parcel/transformer-elm": "^2.7.0",
+    "elm-test": "^0.19.1-revision10"
   }
 }
