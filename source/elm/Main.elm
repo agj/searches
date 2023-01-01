@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Main exposing (main, parseUrlQuery)
 
 import Browser
 import Browser.Navigation as Navigation
