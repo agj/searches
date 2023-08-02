@@ -1,17 +1,4 @@
 {
-  "scripts": {
-    "build": "parcel build source/html/index.html --public-url ./",
-    "prebuild": "rm -rf dist",
-    "develop": "parcel source/html/index.html",
-    "serve": "python3 -m http.server 1234 --directory ./dist/",
-    "preserve": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "predeploy": "npm run build",
-    "test": "npx elm-test"
-  },
-  "engines": {
-    "node": ">=14.x"
-  },
   "type": "module",
   "private": true,
   "devDependencies": {
