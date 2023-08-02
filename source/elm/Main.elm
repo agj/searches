@@ -105,9 +105,7 @@ view model =
     { title = "Searches"
     , body =
         [ Element.layout
-            [ Background.color Palette.dark
-            , Font.size 16
-            ]
+            [ Font.size 16 ]
             (viewMain model.query)
         ]
     }
