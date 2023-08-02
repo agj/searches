@@ -3,10 +3,10 @@ build: install ## Build the page.
 	npx parcel build source/html/index.html --public-url ./
 
 develop: install ## Run development server.
-	npx parcel source/html/index.html
+	npx parcel --port 1237 source/html/index.html
 
 serve: build ## Serve to test in a different device.
-	python3 -m http.server 1234 --directory ./dist/
+	python3 -m http.server 1237 --directory ./dist/
 
 deploy: build ## Deploy on Github Pages.
 	gh-pages -d dist
