@@ -9,7 +9,7 @@ serve: build ## Serve to test in a different device.
 	python3 -m http.server 1237 --directory ./dist/
 
 deploy: build ## Deploy on Github Pages.
-	gh-pages -d dist
+	npx gh-pages -d dist
 
 test: ## Run tests.
 	elm-test
