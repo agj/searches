@@ -23,7 +23,7 @@
             just
             nodePackages.pnpm
             nodePackages.prettier
-            nodejs_20
+            nodejs-slim_22
           ];
         };
       }
