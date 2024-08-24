@@ -5,11 +5,11 @@ default:
 # Build the page.
 build: install
 	rm -rf dist
-	npx parcel build source/html/index.html --public-url ./ --no-autoinstall
+	pnpm exec parcel build source/html/index.html --public-url ./ --no-autoinstall
 
 # Run development server.
 develop: install
-	npx parcel --port 1237 source/html/index.html
+	pnpm exec parcel --port 1237 source/html/index.html --no-autoinstall
 
 # Serve to test in a different device.
 serve: build
@@ -17,7 +17,7 @@ serve: build
 
 # Deploy on Github Pages.
 deploy: build
-	npx gh-pages -d dist
+	pnpm exec gh-pages -d dist
 
 # Run tests.
 test:
