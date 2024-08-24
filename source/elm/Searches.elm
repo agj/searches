@@ -9,6 +9,9 @@ searches =
         [ { name = "Duck"
           , url = s "https://duckduckgo.com/?q=" ""
           }
+        , { name = "Eco"
+          , url = s "https://www.ecosia.org/search?method=index&q=" ""
+          }
         , { name = "Google"
           , url = s "http://www.google.com/search?q=" ""
           }
