@@ -5,7 +5,7 @@ default:
 # Build the page.
 build: install
 	rm -rf dist
-	npx parcel build source/html/index.html --public-url ./
+	npx parcel build source/html/index.html --public-url ./ --no-autoinstall
 
 # Run development server.
 develop: install
