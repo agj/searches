@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@parcel/transformer-elm':
-        specifier: 2.12.0
-        version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))(elm@0.19.1-6)
+        specifier: 2.8.2
+        version: 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))(elm@0.19.1-6)
       gh-pages:
         specifier: ^6.1.1
         version: 6.1.1
@@ -79,9 +79,19 @@ packages:
   '@lezer/lr@0.15.8':
     resolution: {integrity: sha512-bM6oE6VQZ6hIFxDNKk8bKPa14hqFrV07J/vHGOeiAbJReIaQXmkVb6xQu4MR+JBTLa5arGRyAAjJe1qaQt3Uvg==}
 
+  '@lmdb/lmdb-darwin-arm64@2.5.2':
+    resolution: {integrity: sha512-+F8ioQIUN68B4UFiIBYu0QQvgb9FmlKw2ctQMSBfW2QBrZIxz9vD9jCGqTCPqZBRbPHAS/vG1zSXnKqnS2ch/A==}
+    cpu: [arm64]
+    os: [darwin]
+
   '@lmdb/lmdb-darwin-arm64@2.8.5':
     resolution: {integrity: sha512-KPDeVScZgA1oq0CiPBcOa3kHIqU+pTOwRFDIhxvmf8CTNvqdZQYp5cCKW0bUk69VygB2PuTiINFWbY78aR2pQw==}
     cpu: [arm64]
+    os: [darwin]
+
+  '@lmdb/lmdb-darwin-x64@2.5.2':
+    resolution: {integrity: sha512-KvPH56KRLLx4KSfKBx0m1r7GGGUMXm0jrKmNE7plbHlesZMuPJICtn07HYgQhj1LNsK7Yqwuvnqh1QxhJnF1EA==}
+    cpu: [x64]
     os: [darwin]
 
   '@lmdb/lmdb-darwin-x64@2.8.5':
@@ -89,9 +99,19 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  '@lmdb/lmdb-linux-arm64@2.5.2':
+    resolution: {integrity: sha512-aLl89VHL/wjhievEOlPocoefUyWdvzVrcQ/MHQYZm2JfV1jUsrbr/ZfkPPUFvZBf+VSE+Q0clWs9l29PCX1hTQ==}
+    cpu: [arm64]
+    os: [linux]
+
   '@lmdb/lmdb-linux-arm64@2.8.5':
     resolution: {integrity: sha512-vtbZRHH5UDlL01TT5jB576Zox3+hdyogvpcbvVJlmU5PdL3c5V7cj1EODdh1CHPksRl+cws/58ugEHi8bcj4Ww==}
     cpu: [arm64]
+    os: [linux]
+
+  '@lmdb/lmdb-linux-arm@2.5.2':
+    resolution: {integrity: sha512-5kQAP21hAkfW5Bl+e0P57dV4dGYnkNIpR7f/GAh6QHlgXx+vp/teVj4PGRZaKAvt0GX6++N6hF8NnGElLDuIDw==}
+    cpu: [arm]
     os: [linux]
 
   '@lmdb/lmdb-linux-arm@2.8.5':
@@ -99,10 +119,20 @@ packages:
     cpu: [arm]
     os: [linux]
 
+  '@lmdb/lmdb-linux-x64@2.5.2':
+    resolution: {integrity: sha512-xUdUfwDJLGjOUPH3BuPBt0NlIrR7f/QHKgu3GZIXswMMIihAekj2i97oI0iWG5Bok/b+OBjHPfa8IU9velnP/Q==}
+    cpu: [x64]
+    os: [linux]
+
   '@lmdb/lmdb-linux-x64@2.8.5':
     resolution: {integrity: sha512-Xkc8IUx9aEhP0zvgeKy7IQ3ReX2N8N1L0WPcQwnZweWmOuKfwpS3GRIYqLtK5za/w3E60zhFfNdS+3pBZPytqQ==}
     cpu: [x64]
     os: [linux]
+
+  '@lmdb/lmdb-win32-x64@2.5.2':
+    resolution: {integrity: sha512-zrBczSbXKxEyK2ijtbRdICDygRqWSRPpZMN5dD1T8VMEW5RIhIbwFWw2phDRXuBQdVDpSjalCIUMWMV2h3JaZA==}
+    cpu: [x64]
+    os: [win32]
 
   '@lmdb/lmdb-win32-x64@2.8.5':
     resolution: {integrity: sha512-4wvrf5BgnR8RpogHhtpCPJMKBmvyZPhhUtEwMJbXh0ni2BucpfF07jlmyM11zRqQ2XIq6PbC2j7W7UCCcm1rRQ==}
@@ -153,8 +183,18 @@ packages:
     peerDependencies:
       '@parcel/core': ^2.12.0
 
+  '@parcel/cache@2.8.2':
+    resolution: {integrity: sha512-kiyoOgh1RXp5qp+wlb8Pi/Z7o9D82Oj5RlHnKSAauyR7jgnI8Vq8JTeBmlLqrf+kHxcDcp2p86hidSeANhlQNg==}
+    engines: {node: '>= 12.0.0'}
+    peerDependencies:
+      '@parcel/core': ^2.8.2
+
   '@parcel/codeframe@2.12.0':
     resolution: {integrity: sha512-v2VmneILFiHZJTxPiR7GEF1wey1/IXPdZMcUlNXBiPZyWDfcuNgGGVQkx/xW561rULLIvDPharOMdxz5oHOKQg==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/codeframe@2.8.2':
+    resolution: {integrity: sha512-U2GT9gq1Zs3Gr83j8JIs10bLbGOHFl57Y8D57nrdR05F4iilV/UR6K7jkhdoiFc9WiHh3ewvrko5+pSdAVFPgQ==}
     engines: {node: '>= 12.0.0'}
 
   '@parcel/compressor-raw@2.12.0':
@@ -174,8 +214,20 @@ packages:
     resolution: {integrity: sha512-8f1NOsSFK+F4AwFCKynyIu9Kr/uWHC+SywAv4oS6Bv3Acig0gtwUjugk0C9UaB8ztBZiW5TQZhw+uPZn9T/lJA==}
     engines: {node: '>= 12.0.0'}
 
+  '@parcel/diagnostic@2.8.2':
+    resolution: {integrity: sha512-tGSMwM2rSYLjJW0fCd9gb3tNjfCX/83PZ10/5u2E33UZVkk8OIHsQmsrtq2H2g4oQL3rFxkfEx6nGPDGHwlx7A==}
+    engines: {node: '>= 12.0.0'}
+
   '@parcel/events@2.12.0':
     resolution: {integrity: sha512-nmAAEIKLjW1kB2cUbCYSmZOGbnGj8wCzhqnK727zCCWaA25ogzAtt657GPOeFyqW77KyosU728Tl63Fc8hphIA==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/events@2.8.2':
+    resolution: {integrity: sha512-o5etrsKm16y8iRPnjtEBNy4lD0WAigD66yt/RZl9Rx0vPVDly/63Rr9+BrXWVW7bJ7x0S0VVpWW4j3f/qZOsXg==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/fs-search@2.8.2':
+    resolution: {integrity: sha512-ovQnupRm/MoE/tbgH0Ivknk0QYenXAewjcog+T5umDmUlTmnIRZjURrgDf5Xtw8T/CD5Xv+HmIXpJ9Ez/LzJpw==}
     engines: {node: '>= 12.0.0'}
 
   '@parcel/fs@2.12.0':
@@ -184,16 +236,34 @@ packages:
     peerDependencies:
       '@parcel/core': ^2.12.0
 
+  '@parcel/fs@2.8.2':
+    resolution: {integrity: sha512-aN8znbMndSqn1xwZEmMblzqmJsxcExv2jKLl/a9RUHAP7LaPYcPZIykDL3YwGCiKTCzjmRpXnNoyosjFFeBaHA==}
+    engines: {node: '>= 12.0.0'}
+    peerDependencies:
+      '@parcel/core': ^2.8.2
+
   '@parcel/graph@3.2.0':
     resolution: {integrity: sha512-xlrmCPqy58D4Fg5umV7bpwDx5Vyt7MlnQPxW68vae5+BA4GSWetfZt+Cs5dtotMG2oCHzZxhIPt7YZ7NRyQzLA==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/hash@2.8.2':
+    resolution: {integrity: sha512-NBnP8Hu0xvAqAfZXRaMM66i8nJyxpKS86BbhwkbgTGbwO1OY87GERliHeREJfcER0E0ZzwNow7MNR8ZDm6IvJQ==}
     engines: {node: '>= 12.0.0'}
 
   '@parcel/logger@2.12.0':
     resolution: {integrity: sha512-cJ7Paqa7/9VJ7C+KwgJlwMqTQBOjjn71FbKk0G07hydUEBISU2aDfmc/52o60ErL9l+vXB26zTrIBanbxS8rVg==}
     engines: {node: '>= 12.0.0'}
 
+  '@parcel/logger@2.8.2':
+    resolution: {integrity: sha512-zlhK6QHxfFJMlVJxxcCw0xxBDrYPFPOhMxSD6p6b0z9Yct1l3NdpmfabgjKX8wnZmHokFsil6daleM+M80n2Ew==}
+    engines: {node: '>= 12.0.0'}
+
   '@parcel/markdown-ansi@2.12.0':
     resolution: {integrity: sha512-WZz3rzL8k0H3WR4qTHX6Ic8DlEs17keO9gtD4MNGyMNQbqQEvQ61lWJaIH0nAtgEetu0SOITiVqdZrb8zx/M7w==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/markdown-ansi@2.8.2':
+    resolution: {integrity: sha512-5y29TXgRgG0ybuXaDsDk4Aofg/nDUeAAyVl9/toYCDDhxpQV4yZt8WNPu4PaNYKGLuNgXwsmz+ryZQHGmfbAIQ==}
     engines: {node: '>= 12.0.0'}
 
   '@parcel/namer-default@2.12.0':
@@ -232,6 +302,12 @@ packages:
     peerDependencies:
       '@parcel/core': ^2.12.0
 
+  '@parcel/package-manager@2.8.2':
+    resolution: {integrity: sha512-hx4Imi0yhsSS0aNZkEANPYNNKqBuR63EUNWSxMyHh4ZOvbHoOXnMn1ySGdx6v0oi9HvKymNsLMQ1T5CuI4l4Bw==}
+    engines: {node: '>= 12.0.0'}
+    peerDependencies:
+      '@parcel/core': ^2.8.2
+
   '@parcel/packager-css@2.12.0':
     resolution: {integrity: sha512-j3a/ODciaNKD19IYdWJT+TP+tnhhn5koBGBWWtrKSu0UxWpnezIGZetit3eE+Y9+NTePalMkvpIlit2eDhvfJA==}
     engines: {node: '>= 12.0.0', parcel: ^2.12.0}
@@ -258,6 +334,10 @@ packages:
 
   '@parcel/plugin@2.12.0':
     resolution: {integrity: sha512-nc/uRA8DiMoe4neBbzV6kDndh/58a4wQuGKw5oEoIwBCHUvE2W8ZFSu7ollSXUGRzfacTt4NdY8TwS73ScWZ+g==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/plugin@2.8.2':
+    resolution: {integrity: sha512-YG7TWfKsoNm72jbz3b3TLec0qJHVkuAWSzGzowdIhX37cP1kRfp6BU2VcH+qYPP/KYJLzhcZa9n3by147mGcxw==}
     engines: {node: '>= 12.0.0'}
 
   '@parcel/profiler@2.12.0':
@@ -312,9 +392,9 @@ packages:
     resolution: {integrity: sha512-vXhOqoAlQGATYyQ433Z1DXKmiKmzOAUmKysbYH3FD+LKEKLMEl/pA14goqp00TW+A/EjtSKKyeMyHlMIIUqj4Q==}
     engines: {node: '>= 12.0.0', parcel: ^2.12.0}
 
-  '@parcel/transformer-elm@2.12.0':
-    resolution: {integrity: sha512-qqVTsP860FghYTLBrJkrFKD7qbNUq/EqUCofFKLWgWSrMXfzTmsNwMCOStTF4NyclLWcC9KBVjNU+fGS5I519Q==}
-    engines: {node: '>= 12.0.0', parcel: ^2.12.0}
+  '@parcel/transformer-elm@2.8.2':
+    resolution: {integrity: sha512-K9WyXIIZWAXbyNqMGXN7XIVXk/DhdaFOq4gk3h7c2dwDmXh3v+Q7jG1Co4z0/KUQ1YpTuWCtFOuj9y4Ob2nfpQ==}
+    engines: {node: '>= 12.0.0', parcel: ^2.8.2}
     peerDependencies:
       elm: ^0.19.1-5
 
@@ -361,8 +441,15 @@ packages:
   '@parcel/types@2.12.0':
     resolution: {integrity: sha512-8zAFiYNCwNTQcglIObyNwKfRYQK5ELlL13GuBOrSMxueUiI5ylgsGbTS1N7J3dAGZixHO8KhHGv5a71FILn9rQ==}
 
+  '@parcel/types@2.8.2':
+    resolution: {integrity: sha512-HAYhokWxM10raIhqaYj9VR9eAvJ+xP2sNfQ1IcQybHpq3qblcBe/4jDeuUpwIyKeQ4gorp7xY+q8KDoR20j43w==}
+
   '@parcel/utils@2.12.0':
     resolution: {integrity: sha512-z1JhLuZ8QmDaYoEIuUCVZlhcFrS7LMfHrb2OCRui5SQFntRWBH2fNM6H/fXXUkT9SkxcuFP2DUA6/m4+Gkz72g==}
+    engines: {node: '>= 12.0.0'}
+
+  '@parcel/utils@2.8.2':
+    resolution: {integrity: sha512-Ufax7wZxC9FNsUpR0EU7Z22LEY/q9jjsDTwswctCdfpWb7TE/NudOfM9myycfRvwBVEYN50lPbkt1QltEVnXQQ==}
     engines: {node: '>= 12.0.0'}
 
   '@parcel/watcher-android-arm64@2.2.0':
@@ -434,6 +521,12 @@ packages:
     engines: {node: '>= 12.0.0'}
     peerDependencies:
       '@parcel/core': ^2.12.0
+
+  '@parcel/workers@2.8.2':
+    resolution: {integrity: sha512-Eg6CofIrJSNBa2fjXwvnzVLPKwR/6fkfQTFAm3Jl+4JYLVknBtTSFzQNp/Fa+HUEG889H9ucTk2CBi/fVPBAFw==}
+    engines: {node: '>= 12.0.0'}
+    peerDependencies:
+      '@parcel/core': ^2.8.2
 
   '@swc/core-darwin-arm64@1.5.7':
     resolution: {integrity: sha512-bZLVHPTpH3h6yhwVl395k0Mtx8v6CGhq5r4KQdAoPbADU974Mauz1b6ViHAJ74O0IVE5vyy7tD3OpkQxL/vMDQ==}
@@ -924,6 +1017,9 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  lmdb@2.5.2:
+    resolution: {integrity: sha512-V5V5Xa2Hp9i2XsbDALkBTeHXnBXh/lEmk9p22zdr7jtuOIY9TGhjK6vAvTpOOx9IKU4hJkRWZxn/HsvR1ELLtA==}
+
   lmdb@2.8.5:
     resolution: {integrity: sha512-9bMdFfc80S+vSldBmG3HOuLVHnxRdNTlpzR6QDnzqCQtCzGUEAGTzBKYMeIM+I/sU4oZfgbcbS7X7F65/z/oxQ==}
     hasBin: true
@@ -966,6 +1062,9 @@ packages:
   nice-try@1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
 
+  node-addon-api@4.3.0:
+    resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
+
   node-addon-api@6.1.0:
     resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
 
@@ -975,6 +1074,10 @@ packages:
   node-elm-compiler@5.0.6:
     resolution: {integrity: sha512-DWTRQR8b54rvschcZRREdsz7K84lnS8A6YJu8du3QLQ8f204SJbyTaA6NzYYbfUG97OTRKRv/0KZl82cTfpLhA==}
     engines: {node: '>=4.0.0'}
+
+  node-gyp-build-optional-packages@5.0.3:
+    resolution: {integrity: sha512-k75jcVzk5wnnc/FMxsf4udAoTEUv2jY3ycfdSd3yWu6Cnd1oee6/CfZJApyscA4FJOmdoixWwiwOyf16RzD5JA==}
+    hasBin: true
 
   node-gyp-build-optional-packages@5.0.7:
     resolution: {integrity: sha512-YlCCc6Wffkx0kHkmam79GKvDQ6x+QZkMjFGrIMxgFNILFvGSbCp2fCBC55pGTT9gVaz8Na5CLmxt/urtzRv36w==}
@@ -1233,6 +1336,9 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
+  xxhash-wasm@0.4.2:
+    resolution: {integrity: sha512-/eyHVRJQCirEkSZ1agRSCwriMhwlyUcFkXD5TPVSLP+IPzjsqMVzZwdoczLp1SoQU0R3dxz1RpIK+4YNQbCVOA==}
+
 snapshots:
 
   '@babel/code-frame@7.22.5':
@@ -1287,19 +1393,37 @@ snapshots:
     dependencies:
       '@lezer/common': 0.15.12
 
+  '@lmdb/lmdb-darwin-arm64@2.5.2':
+    optional: true
+
   '@lmdb/lmdb-darwin-arm64@2.8.5':
+    optional: true
+
+  '@lmdb/lmdb-darwin-x64@2.5.2':
     optional: true
 
   '@lmdb/lmdb-darwin-x64@2.8.5':
     optional: true
 
+  '@lmdb/lmdb-linux-arm64@2.5.2':
+    optional: true
+
   '@lmdb/lmdb-linux-arm64@2.8.5':
+    optional: true
+
+  '@lmdb/lmdb-linux-arm@2.5.2':
     optional: true
 
   '@lmdb/lmdb-linux-arm@2.8.5':
     optional: true
 
+  '@lmdb/lmdb-linux-x64@2.5.2':
+    optional: true
+
   '@lmdb/lmdb-linux-x64@2.8.5':
+    optional: true
+
+  '@lmdb/lmdb-win32-x64@2.5.2':
     optional: true
 
   '@lmdb/lmdb-win32-x64@2.8.5':
@@ -1348,7 +1472,19 @@ snapshots:
       '@parcel/utils': 2.12.0
       lmdb: 2.8.5
 
+  '@parcel/cache@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
+    dependencies:
+      '@parcel/core': 2.12.0(@swc/helpers@0.5.11)
+      '@parcel/fs': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/logger': 2.8.2
+      '@parcel/utils': 2.8.2
+      lmdb: 2.5.2
+
   '@parcel/codeframe@2.12.0':
+    dependencies:
+      chalk: 4.1.2
+
+  '@parcel/codeframe@2.8.2':
     dependencies:
       chalk: 4.1.2
 
@@ -1437,7 +1573,18 @@ snapshots:
       '@mischnic/json-sourcemap': 0.1.0
       nullthrows: 1.1.1
 
+  '@parcel/diagnostic@2.8.2':
+    dependencies:
+      '@mischnic/json-sourcemap': 0.1.0
+      nullthrows: 1.1.1
+
   '@parcel/events@2.12.0': {}
+
+  '@parcel/events@2.8.2': {}
+
+  '@parcel/fs-search@2.8.2':
+    dependencies:
+      detect-libc: 1.0.3
 
   '@parcel/fs@2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))(@swc/helpers@0.5.11)':
     dependencies:
@@ -1450,16 +1597,39 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
+  '@parcel/fs@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
+    dependencies:
+      '@parcel/core': 2.12.0(@swc/helpers@0.5.11)
+      '@parcel/fs-search': 2.8.2
+      '@parcel/types': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/utils': 2.8.2
+      '@parcel/watcher': 2.2.0
+      '@parcel/workers': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+
   '@parcel/graph@3.2.0':
     dependencies:
       nullthrows: 1.1.1
+
+  '@parcel/hash@2.8.2':
+    dependencies:
+      detect-libc: 1.0.3
+      xxhash-wasm: 0.4.2
 
   '@parcel/logger@2.12.0':
     dependencies:
       '@parcel/diagnostic': 2.12.0
       '@parcel/events': 2.12.0
 
+  '@parcel/logger@2.8.2':
+    dependencies:
+      '@parcel/diagnostic': 2.8.2
+      '@parcel/events': 2.8.2
+
   '@parcel/markdown-ansi@2.12.0':
+    dependencies:
+      chalk: 4.1.2
+
+  '@parcel/markdown-ansi@2.8.2':
     dependencies:
       chalk: 4.1.2
 
@@ -1557,6 +1727,17 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
+  '@parcel/package-manager@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
+    dependencies:
+      '@parcel/core': 2.12.0(@swc/helpers@0.5.11)
+      '@parcel/diagnostic': 2.8.2
+      '@parcel/fs': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/logger': 2.8.2
+      '@parcel/types': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/utils': 2.8.2
+      '@parcel/workers': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      semver: 5.7.2
+
   '@parcel/packager-css@2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
     dependencies:
       '@parcel/diagnostic': 2.12.0
@@ -1615,6 +1796,12 @@ snapshots:
   '@parcel/plugin@2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
     dependencies:
       '@parcel/types': 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))(@swc/helpers@0.5.11)
+    transitivePeerDependencies:
+      - '@parcel/core'
+
+  '@parcel/plugin@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
+    dependencies:
+      '@parcel/types': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
     transitivePeerDependencies:
       - '@parcel/core'
 
@@ -1721,10 +1908,10 @@ snapshots:
     transitivePeerDependencies:
       - '@parcel/core'
 
-  '@parcel/transformer-elm@2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))(elm@0.19.1-6)':
+  '@parcel/transformer-elm@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))(elm@0.19.1-6)':
     dependencies:
-      '@parcel/diagnostic': 2.12.0
-      '@parcel/plugin': 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/diagnostic': 2.8.2
+      '@parcel/plugin': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
       command-exists: 1.2.9
       cross-spawn: 7.0.3
       elm: 0.19.1-6
@@ -1844,6 +2031,18 @@ snapshots:
       - '@parcel/core'
       - '@swc/helpers'
 
+  '@parcel/types@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
+    dependencies:
+      '@parcel/cache': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/diagnostic': 2.8.2
+      '@parcel/fs': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/package-manager': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/source-map': 2.1.1
+      '@parcel/workers': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      utility-types: 3.10.0
+    transitivePeerDependencies:
+      - '@parcel/core'
+
   '@parcel/utils@2.12.0':
     dependencies:
       '@parcel/codeframe': 2.12.0
@@ -1854,6 +2053,16 @@ snapshots:
       '@parcel/source-map': 2.1.1
       chalk: 4.1.2
       nullthrows: 1.1.1
+
+  '@parcel/utils@2.8.2':
+    dependencies:
+      '@parcel/codeframe': 2.8.2
+      '@parcel/diagnostic': 2.8.2
+      '@parcel/hash': 2.8.2
+      '@parcel/logger': 2.8.2
+      '@parcel/markdown-ansi': 2.8.2
+      '@parcel/source-map': 2.1.1
+      chalk: 4.1.2
 
   '@parcel/watcher-android-arm64@2.2.0':
     optional: true
@@ -1911,6 +2120,16 @@ snapshots:
       '@parcel/profiler': 2.12.0
       '@parcel/types': 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.11))(@swc/helpers@0.5.11)
       '@parcel/utils': 2.12.0
+      nullthrows: 1.1.1
+
+  '@parcel/workers@2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))':
+    dependencies:
+      '@parcel/core': 2.12.0(@swc/helpers@0.5.11)
+      '@parcel/diagnostic': 2.8.2
+      '@parcel/logger': 2.8.2
+      '@parcel/types': 2.8.2(@parcel/core@2.12.0(@swc/helpers@0.5.11))
+      '@parcel/utils': 2.8.2
+      chrome-trace-event: 1.0.3
       nullthrows: 1.1.1
 
   '@swc/core-darwin-arm64@1.5.7':
@@ -2333,6 +2552,21 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
+  lmdb@2.5.2:
+    dependencies:
+      msgpackr: 1.10.2
+      node-addon-api: 4.3.0
+      node-gyp-build-optional-packages: 5.0.3
+      ordered-binary: 1.4.1
+      weak-lru-cache: 1.2.2
+    optionalDependencies:
+      '@lmdb/lmdb-darwin-arm64': 2.5.2
+      '@lmdb/lmdb-darwin-x64': 2.5.2
+      '@lmdb/lmdb-linux-arm': 2.5.2
+      '@lmdb/lmdb-linux-arm64': 2.5.2
+      '@lmdb/lmdb-linux-x64': 2.5.2
+      '@lmdb/lmdb-win32-x64': 2.5.2
+
   lmdb@2.8.5:
     dependencies:
       msgpackr: 1.10.2
@@ -2393,6 +2627,8 @@ snapshots:
 
   nice-try@1.0.5: {}
 
+  node-addon-api@4.3.0: {}
+
   node-addon-api@6.1.0: {}
 
   node-addon-api@7.0.0: {}
@@ -2403,6 +2639,8 @@ snapshots:
       find-elm-dependencies: 2.0.4
       lodash: 4.17.21
       temp: 0.9.4
+
+  node-gyp-build-optional-packages@5.0.3: {}
 
   node-gyp-build-optional-packages@5.0.7:
     optional: true
@@ -2633,3 +2871,5 @@ snapshots:
       isexe: 2.0.0
 
   wrappy@1.0.2: {}
+
+  xxhash-wasm@0.4.2: {}
