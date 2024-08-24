@@ -20,9 +20,10 @@
             elmPackages.elm
             elmPackages.elm-format
             elmPackages.elm-test
-            nodejs_20
+            just
             nodePackages.pnpm
             nodePackages.prettier
+            nodejs_20
           ];
         };
       }
