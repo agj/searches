@@ -1,6 +1,6 @@
-import { Elm } from "../elm/Main.elm";
+import Main from "../elm/Main.elm";
 
-const app = Elm.Main.init({
+Main.init({
   node: document.getElementById("elm"),
   flags: {},
 });
