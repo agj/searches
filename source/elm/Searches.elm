@@ -12,8 +12,11 @@ searches =
         , { name = "Eco"
           , url = s "https://www.ecosia.org/search?method=index&q=" ""
           }
+        , { name = "Sxng"
+          , url = s "https://search.ononoki.org/search?q=" ""
+          }
         , { name = "Google"
-          , url = s "http://www.google.com/search?q=" ""
+          , url = s "http://www.google.com/search?q=" "&udm=14"
           }
         ]
     , dictionaries =
