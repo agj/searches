@@ -28,7 +28,7 @@ install:
 [private]
 qr:
     #!/usr/bin/env nu
-    let ip = sys net | where name == "en0" | get ip | get 0 | where protocol == "ipv4" | get address | get 0
+    let ip = sys net | where name == "en0" | get 0.ip | where protocol == "ipv4" | get 0.address
     let url = $"http://($ip):{{port}}"
     qrtool encode -t ansi256 $url
     print $url
