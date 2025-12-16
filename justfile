@@ -21,7 +21,7 @@ deploy: build
 test:
   elm-test
 
-# Only install dependencies.
+[private]
 install:
   pnpm install
 
