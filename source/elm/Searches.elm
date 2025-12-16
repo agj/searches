@@ -12,16 +12,26 @@ searches =
         , { name = "Eco"
           , url = s "https://www.ecosia.org/search?method=index&q=" ""
           }
+
+        -- See: https://searx.space/
         , { name = "Sxng"
-          , url = s "https://search.ononoki.org/search?q=" ""
+          , url = s "https://kantan.cat/search?category_general=1&language=auto&time_range=&safesearch=0&theme=simple&q=" ""
           }
         , { name = "Google"
           , url = s "http://www.google.com/search?q=" "&udm=14"
           }
         ]
+    , dictionariesMono =
+        [ { name = "英"
+          , url = s "http://www.thefreedictionary.com/" ""
+          }
+        , { name = "RAE"
+          , url = s "https://dle.rae.es/?w=" ""
+          }
+        ]
     , dictionaries =
-        [ { name = "goo"
-          , url = s "https://dictionary.goo.ne.jp/freewordsearcher.html?MT=" "&mode=0&kind=all"
+        [ { name = "Wikt英"
+          , url = s "https://en.wiktionary.org/wiki/" ""
           }
         , { name = "ALC"
           , url = s "http://eow.alc.co.jp/" ""
@@ -38,17 +48,11 @@ searches =
         , { name = "Y!辞書"
           , url = s "http://dic.search.yahoo.co.jp/dsearch?p=" "&dic_id=jj&stype=prefix&b=1"
           }
-        , { name = "英"
-          , url = s "http://www.thefreedictionary.com/" ""
-          }
         , { name = "西→英"
           , url = s "http://www.wordreference.com/esen/" ""
           }
         , { name = "英 類語"
           , url = s "http://thesaurus.com/browse/" ""
-          }
-        , { name = "RAE"
-          , url = s "https://dle.rae.es/?w=" ""
           }
         , { name = "仏→英"
           , url = s "http://www.wordreference.com/fren/" ""

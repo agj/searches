@@ -11,6 +11,7 @@ type alias Search =
 
 type alias GroupedSearches =
     { regular : List Search
+    , dictionariesMono : List Search
     , dictionaries : List Search
     , images : List Search
     , wikipedia : List Search

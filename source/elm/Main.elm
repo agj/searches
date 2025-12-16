@@ -155,10 +155,11 @@ viewButtons : Element Msg
 viewButtons =
     wrappedRow [ spacing 10 ]
         ([ List.map (viewButton Palette.dark1) Searches.searches.regular
-         , List.map (viewButton Palette.dark2) Searches.searches.dictionaries
-         , List.map (viewButton Palette.dark3) Searches.searches.images
-         , List.map (viewButton Palette.dark1) Searches.searches.wikipedia
-         , List.map (viewButton Palette.dark2) Searches.searches.other
+         , List.map (viewButton Palette.dark2) Searches.searches.dictionariesMono
+         , List.map (viewButton Palette.dark3) Searches.searches.dictionaries
+         , List.map (viewButton Palette.dark1) Searches.searches.images
+         , List.map (viewButton Palette.dark2) Searches.searches.wikipedia
+         , List.map (viewButton Palette.dark3) Searches.searches.other
          ]
             |> List.concat
         )
