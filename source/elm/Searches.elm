@@ -7,7 +7,7 @@ searches : GroupedSearches
 searches =
     { regular =
         [ { name = "Duck"
-          , url = s "https://duckduckgo.com/?q=" ""
+          , url = s "https://noai.duckduckgo.com/?q=" ""
           }
         , { name = "Eco"
           , url = s "https://www.ecosia.org/search?method=index&q=" ""
