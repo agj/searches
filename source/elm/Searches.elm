@@ -69,10 +69,10 @@ searches =
         ]
     , images =
         [ { name = "圖片"
-          , url = s "https://duckduckgo.com/?q=" "&iax=images&ia=images"
+          , url = s "https://noai.duckduckgo.com/?q=" "&iax=images&ia=images"
           }
         , { name = "影片"
-          , url = s "https://duckduckgo.com/?q=-site%3Ayoutube.com%20" "&iax=videos&ia=videos"
+          , url = s "https://noai.duckduckgo.com/?q=-site%3Ayoutube.com%20" "&iax=videos&ia=videos"
           }
         , { name = "nico"
           , url = s "http://www.nicovideo.jp/search/" ""
