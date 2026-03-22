@@ -9,6 +9,9 @@ searches =
         [ { name = "Duck"
           , url = s "https://noai.duckduckgo.com/?q=" ""
           }
+        , { name = "Start"
+          , url = s "https://www.startpage.com/do/search?query=" ""
+          }
         , { name = "Eco"
           , url = s "https://www.ecosia.org/search?method=index&q=" ""
           }
