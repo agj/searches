@@ -14,7 +14,7 @@ develop: install qr
   pnpm exec vite --port {{port}} --clearScreen false --host
 
 # Deploy on Github Pages.
-deploy: build
+deploy: build test
   pnpm exec gh-pages -d dist
 
 # Run tests.
