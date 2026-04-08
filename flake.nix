@@ -1,6 +1,4 @@
 {
-  description = "Searches";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -18,12 +16,13 @@
         devShell = pkgs.mkShell {
           buildInputs = [
             pkgs.elmPackages.elm
+            pkgs.elmPackages.elm-format
             pkgs.elmPackages.elm-test
             pkgs.just
-            pkgs.nodePackages.prettier
-            pkgs.nodejs-slim_22
+            pkgs.nodejs-slim_24
             pkgs.nushell
             pkgs.pnpm
+            pkgs.prettier
             pkgs.qrtool
           ];
         };
